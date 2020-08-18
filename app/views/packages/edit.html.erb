@@ -1,0 +1,10 @@
+<div>
+      <% if @package.images.attached? %>
+      <% @package.images.each do |image| %>
+      <div class="image-box">
+        <%= image_tag image.variant(resize: "280x280") %>
+         <p> <%= image.filename %> </p>
+      </div>
+      <% end %>
+      <% end %>
+</div>

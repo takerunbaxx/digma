@@ -1,0 +1,49 @@
+
+<div class="bg-light mr-md-2 pt-2 px-2 pt-md-4 px-md-4 text-center overflow-hidden">
+    <h1>予約した商品パッケージ</h1>
+       <%=image_tag @package.images[0].variant(resize: "500x400")%>
+        <div class="m-3 p-3 bg-white box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 10px 10px 0 0; font=family: Hiragino Sans;">
+          <h2 class="display-4">商品名：<%=@package.package_name%></h2>
+          <p class="lead"><%=@package.package_outline%></p>
+          <p class="lead"><%=@package.price%>　円（税込み）</p>
+        </div>
+</div>
+
+<div class="comment-area">
+  <div class="comment-form bg-light">
+    <%=form_with(model: @comment, url: package_comments_path(@package.id), method: :post, local: true) do |f|%>
+     <%=hidden_field :user_id, value: current_user.id %>
+    <div class="form-group">
+        <%=f.label :content, "コメントを入力してください" %>
+        <%=f.text_area :content, class: "form-control" %>
+    </div>
+  </div>
+
+   <div id="star-rating" class="form-group">
+       <%=f.label :score, "５段階で評価してください", class: "ef"%> <br>
+       <%=f.hidden_field :score, id: :comment_star %>
+   </div>
+
+    <div class="form group mt-5">
+     <%=f.submit "コメントする", class: "btn btn-outline-success" %>
+    </div>     
+    <% end %>
+</div>
+
+
+<script>
+
+  $('#star-rating').raty({
+   size: 36,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'comment[score]', // reviewカラムに保存するので忘れないように
+    half: true, // ★の半分の入力を行う
+    click: function(score, e) { 
+        $("#comment_star").val(score) }
+    //score: function() {  
+        //return $(this).attr('data-score');  } 
+ });
+ </script>
+

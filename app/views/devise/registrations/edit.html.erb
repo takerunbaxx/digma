@@ -1,0 +1,57 @@
+<h2 style="color: #F8F8FF;, font-family: Hiragino Sans;"> ユーザー登録情報の追加・編集 </h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+
+    <div class="edit-profile" style="color: #fff;">
+    <%= f.label :username, "＊　ユーザー名変更"  %><br />
+    <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "col-sm-7 ef" %>
+  </div>
+  
+    <div class="edit-profile" style="color: #fff;">
+    <%= f.label :age, "＊　年齢" %><br />
+    <%= f.text_field :age, autofocus: true, autocomplete: "age", class: "col-sm-2 ef" %>
+  </div>
+  
+  
+    <div class="edit-profile" style="color: #fff;">
+    <%= f.label :email, "＊　Eメールアドレスの変更" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-7 ef" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+    <div class="edit-profile" style="color: #fff;">
+    <%= f.label :password, "＊　パスワードの変更"  %> <br /> <i>(新しいパスワードを入力してください。変更する必要がなければ空欄のまま変更ボタンを押してください。)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "col-sm-4 ef" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> 文字以上必要です</em>
+    <% end %>
+  </div>
+
+    <div class="edit-profile" style="color: #fff;">
+    <%= f.label :password_confirmation, "＊　パスワードの確認"  %> <i>(上項目で入力した新しいパスワードを再度入力してください。)</i><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: " col-sm-4 ef" %>
+  </div>
+
+    <div class="edit-profile" style="color: #fff;">
+    <%= f.label :current_password, "＊　現在（変更前）のパスワードを入力してください"  %> <i>(全ての変更には現在のパスワードが必要です。）</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "col-sm-4 ef" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "プロフィール内容を変更する。", class: "btn btn-outline-info" %>
+  </div>
+<% end %>
+
+<div style="color: #fff;">
+<h3>***アカウントの削除***</h3>
+<h7>アカウントを削除しますか？</h7>
+<p><%= button_to "削除する", registration_path(resource_name), data: { confirm: "本当によろしいですか？" }, method: :delete, class: "btn btn-outline-danger" %></p>
+</div>
+
+<%= link_to "Back", :back %>

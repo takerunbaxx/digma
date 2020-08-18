@@ -1,0 +1,43 @@
+<div class="admin-signup bg-dark p-3" style="color: #FFF; font-family: Hiragino Sans;">
+
+
+<h2>施設（事業者）様用新規登録ページ</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "admins/shared/error_messages", resource: resource %>
+  
+   <div class="field form-group" style="color: #fff;">
+      <%=f.label :facility_name, "（１）施設の名称を入力してください。" %><br>
+      <%=f.text_field :facility_name, utofocus: true, autocomplete: "name", class: "form-control"%>
+  </div>
+  
+  <div class="field form-group">
+    <%= f.label :admins_name, "（２）施設ユーザー名を設定してください。" %><br /><i>(ページにログインする際に必要となります。)</i><br />
+    <%= f.text_field :admins_name, autofocus: true, autocomplete: "email", class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :email, "（３）E-mailアドレスを登録してください。" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"  %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :password, "（４）パスワードを設定してください。"%>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> 文字以上使用してください)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password",class: "form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :password_confirmation, "（５）パスワードをもう一度入力してください。"%><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control" %>
+  </div>
+
+  <div class="actions form-group">
+    <%= f.submit "上記内容で登録する", class: "btn btn-outline-success" %>
+  </div>
+<% end %>
+
+</div>
+<%#= render "admins/shared/links" %>

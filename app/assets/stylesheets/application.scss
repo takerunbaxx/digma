@@ -1,37 +1,407 @@
+
+/*
+*= require_tree .
+ *= require_self
+ *= require fullcalendar
+ */
+ 
 * {
    box-sizing: border-box;
 }
 
-body{
+html{
     height: 100%;
-    width: 100%;}
-
+}
+body{
+    display: flex;
+    flex-flow: column;
+    min-height: 100%;
+    width: 100%;
+    background-color: #333333;
+}
+    
 header{
     background-color: #333333;
-    display: flex;
-    
 }
 
 .container{
-    position: relative;
+    flex: 1;
+    margin-top: 30px;
     width: 100%;
 }
-   
+ 
+#error_explanation{
+ z-index: 10000;
+}
+
+//toppage
+
+select#keyword{
+    border: 1px solid ;
+    border-color: #00008B;
+    border-radius: 2px;
+    width: 30%;
+}
+
 .toppage-wrapper{
     height: 100%;
     width: 100%;
     display: inline-block;
     background-color: #333333;
+    padding-top: 100px;
+    color: #FFF;
 }
 
 .toppage-inner{
     background-color: #333333;
+    h1 h2{
+        font-family: "Hiragino Sans";
+    }
+}
+
+//calendar
+
+.calendar-wrapper p{
+      color: #EEFFFF; }
+
+
+#calendar {
+ width: 100%;
+ text-align: center;
+ position: relative;
+}
+
+.package-items {
+	position: relative;
+	width: 80%;
+	margin: 40px 3%;
+}
+
+// admin show
+.table-introduction{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-introduction tr{
+  border-bottom: solid 2px white;
+}
+
+.table-introduction tr:last-child{
+  border-bottom: none;
+}
+
+.table-introduction th{
+  position: relative;
+  text-align: left;
+  width: 30%;
+  background-color: #52c2d0;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  
+td{
+   color: white;
+  }
+}
+
+// search-result
+.back-to{
+    position: relative;
+    top: 200px;
+}
+
+//reservation show (予約の詳細)
+ 
+table {
+  border-collapse: collapse;
+}
+ 
+p {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin: 60px auto 40px;
+}
+ 
+.form-table {
+  width: 100%;
+}
+ 
+.form-table th,
+.form-table td {
+  border-top: 1px solid #d7d7d7;
+  border-bottom: 1px solid #d7d7d7;
+  border-right: 1px solid #d7d7d7;
+  padding: 20px;
+}
+ 
+.form-table th {
+  background: #CBFFD3;
+  padding-left: 50px;
+  position: relative;
+  text-align: left;
+  width: 300px;
+}
+ 
+
+// package new
+
+.ef{
+    color: #fff;
+}
+.package-items input[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #000;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+	
+   &:focus {
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+  }
+}
+
+.package-items input[type="number"] {
+	box-sizing: border-box;
+	width: 30%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #000;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+	
+	&:focus {
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);  
+  }
+}
+
+.package-items .package-text{
+    box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #000;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+	
+	&:focus {
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5); 
+	}
+}
+
+//package show
+
+.package-show{
+    //padding-top: 300px;
+    color: #fff;
+}
+
+.carousel-item img{
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 32rem;
+}
+
+.admin-profile-top h1{
+    color: #fff;
+}
+/* direct_uploads.css */
+
+.direct-upload {
+  display: inline-block;
+  position: relative;
+  padding: 2px 4px;
+  margin: 0 3px 3px 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.direct-upload--pending {
+  opacity: 0.6;
+}
+
+.direct-upload__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0.2;
+  background: #0076ff;
+  transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
+  transform: translate3d(0, 0, 0);
+}
+
+.direct-upload--complete .direct-upload__progress {
+  opacity: 0.4;
+}
+
+.direct-upload--error {
+  border-color: red;
+}
+
+input[type=file][data-direct-upload-url][disabled] {
+  display: none;
+}
+
+//ここまでdirect_uploader
+
+//edit_admin_registration
+
+.edit-profile {
+	position: relative;
+	width: 80%;
+	margin: 40px 3%;
+	color: #F8F8FF;
+}
+
+.edit-profile input[type='text']{
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #000;
+	border: 3px solid #1b2538;
+	border-radius: 4px;
+	
+
+   &:focus {
+	border: 3px solid #008800;
+	outline: none;
+}
+}
+
+.edit-profile input[type='email']{
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #000;
+	border: 3px solid #1b2538;
+	border-radius: 4px;
+	
+
+   &:focus {
+	border: 3px solid #008800;
+	outline: none;
+}
+}
+
+.edit-profile input[type='password']{
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #000;
+	border: 3px solid #1b2538;
+	border-radius: 4px;
+	
+
+   &:focus {
+	border: 3px solid #008800;
+	outline: none;
+}
+}
+
+.edit-profile textarea{
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	height: 180px;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #000;
+	border: 3px solid #1b2538;
+	border-radius: 4px;
+	
+
+   &:focus {
+	border: 3px solid #008800;
+	outline: none;
+}
 }
 
 
 
-footer{
-    background-color: #333333;
-    position: fixed;
+.image-style-package{
+    border-radius: 5px;
+    width: 400px;
+    height: auto;  
+}  
+
+
+
+input input[type='file']{
+    border: 1px solid ;
+    border-color: #00008B;
+    border-radius: 5px;
+
+}
+
+// reservation new
+
+#reservation_start_date_1i,#reservation_start_date_2i,#reservation_start_date_3i,#reservation_start_date_4i,#reservation_start_date_5i{
+    border: 1px solid ;
+    border-color: #00008B;
+    border-radius: 2px;
+    width: 8%; 
+}
+
+#reservation_end_date_1i,#reservation_end_date_2i,#reservation_end_date_3i,#reservation_end_date_4i,#reservation_end_date_5i{
+    border: 1px solid ;
+    border-color: #00008B;
+    border-radius: 2px;
+    width: 8%; 
+}
+
+
+//footer
+	
+footer.mainFooter{
+    //position: absolute;
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 10px 0 0 0;
+    margin: 200px 0 0 0;
+    height: 90px;
+    //bottom: 0px;
+}
+
+ul.footerlist{
+    list-style: none;
     display: flex;
+    color: #000;
+    justify-content:space-around;
+    a{
+        color: #000;
+        font-family: "Hiragino Sans"; }
+    li{
+        padding: 15px;
+    }
 }
+
+

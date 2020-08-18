@@ -1,0 +1,106 @@
+<div class="bg-light p-5">
+      <div class="text-center">
+        <h2>予約申請フォーム</h2>
+        <p class="lead">下記、必要項目を全て入力してください</p>
+      </div>
+
+          <h4 class="mb-3">予約申込内容　</h4>
+            <%= form_with(model:[@package, @package.reservations.build], local: true) do |f|%>
+            <%@package=Package.find(params[:package_id])%>
+            <% f.hidden_field :package_id, value: @package.id %>
+            
+            <div class="col-sm-6 mb-3 form-group">
+                <%=f.label :name, "氏名を記載してください" %>
+                <%=f.text_field :name, class: "form-control" %>
+            </div>
+              
+            <div class="col-sm-10 mb-3 form-group">
+                 <%=f.label :start_date, "利用日時を選択してください" %><br>
+            <section class="time-select">
+              <%=raw sprintf( f.datetime_select(:start_date, start_hour: 8, end_hour: 20, minute_step: 15, date_separator: "%s", datetime_separator: '%s'), '年 ', '月 ', '日　')%>
+              </section>
+            </div>
+              
+            <div class="col-sm-10 mb-4 form-group">
+                <%=f.label :end_date, "終了日時を選択してください。（当日終了の場合は同じ日付を選択してください）" %><br>
+            <section class="time-select">
+              <%=raw sprintf( f.datetime_select(:end_date, start_hour: 8, end_hour: 20, minute_step: 15, date_separator: "%s", datetime_separator: '%s'), '年 ', '月 ', '日　')%>
+              </section>
+            </div>
+              
+            <div class="col-sm-6 mb-3 form-group">
+                 <%=f.label :participants, "予約人数を記載してください" %>
+                <%=f.number_field :participants, class: "form-control" %>
+            </div>
+              
+            <div class="col-sm-6 mb-3 form-group">
+                 <%=f.label :reservation_email, "Eメールアドレスを入力してください" %>
+                <%=f.email_field :reservation_email ,class: "form-control" %>
+            </div>
+
+            <div class="col-sm-6 mb-3 form-group">
+                <%=f.label :user_phone, "電話番号を入力してください" %>
+                <%=f.number_field :user_phone, class: "form-control" %>
+            </div>
+            
+            <div class="mb-4 form-group">
+                <%=f.label :other_request, "その他ご希望がございましたら自由にご記載ください。（メールにてご返信させていただきます）" %>
+                <%=f.text_area :other_request, class: "form-control" %>
+            </div>
+            
+            <div class="mb-3 form-group">
+                <%=f.submit "予約する", class: "btn btn-info" %>
+            </div>
+
+           <%end%>
+           
+ </div>
+
+            <!--hr class="mb-4">
+
+            <h4 class="mb-3">お支払い</h4>
+
+            <div class="d-block my-3">
+              <div class="custom-control custom-radio">
+                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+                <label class="custom-control-label" for="credit">クレジットカードで決済</label>
+              </div>
+
+              <div class="col-sm-6 mb-3">
+                
+                <label for="cc-name">カード名義</label>
+                ここ
+
+                <div class="invalid-feedback">
+                  Name on card is required
+                </div>
+              </div>
+              <div class=" mb-3">
+                <label for="cc-number">Credit card number</label>
+                <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Credit card number is required
+                </div>
+              </div>
+              <div class=" mb-3">
+                <label for="cc-expiration">Expiration</label>
+                <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Expiration date required
+                </div>
+              </div>
+              <div class=" mb-3">
+                <label for="cc-expiration">CVV</label>
+                <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Security code required
+                </div>
+              </div>
+            </div>
+            <hr class="text-center mb-4"-->
+          <!--script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="公開鍵"></script-->
+
+        
+        
+
+    

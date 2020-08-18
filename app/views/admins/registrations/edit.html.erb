@@ -1,0 +1,56 @@
+<h2 style="color: #F8F8FF;, font-family: Hiragino Sans;"> 施設様登録情報の追加・編集 </h2>
+
+<hr>
+<div class="edit-form bg-dark p-3"> 
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "admins/shared/error_messages", resource: resource %>
+
+    <div class="edit-profile">
+     <%= f.label :admins_name, "＊　施設様ユーザー名" %><br />
+     <%= f.text_field :admins_name, autofocus: true, autocomplete: "admins-name", class: "ef" %>
+    </div>
+
+    <div class="edit-profile">
+     <%= f.label :email, "＊　Eメールアドレスの変更" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "ef" %>
+    </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+      
+    
+
+     <div class="edit-profile">
+      <%= f.label :password, "＊　パスワードの変更" %><br /><i>(新しいパスワードを入力してください。変更する必要がなければ空欄のまま変更ボタンを押してください。)</i><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "ef" %>
+      <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> 文字以上必要です</em>
+      <% end %>
+    </div>
+
+    <div class="edit-profile">
+      <%= f.label :password_confirmation, "＊　パスワードの確認" %><br /><i>(上項目で入力した新しいパスワードを再度入力してください。)</i><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "ef" %>
+    </div>
+
+  
+    <div class="edit-profile">
+      <%= f.label :current_password, "＊　現在（変更前）のパスワードを入力してください" %> <br /><i>(全ての変更には現在のパスワードが必要です。)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "ef" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "プロフィール内容を変更する。" , class: "btn btn-outline-info" %>
+    </div>
+    <% end %>
+
+
+<!--h5>アカウント削除</h5>
+<p>アカウントを削除しますか? <%#= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p-->
+
+<%= link_to "前のページに戻る", :back %>
+
+</div>

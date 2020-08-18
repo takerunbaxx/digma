@@ -1,0 +1,18 @@
+    <% @past_reservations.each do |past_reservation|%>
+     <div class="card bg-light mb-3" style="max-width: 70rem;">
+        <div class="card-header">予約日時： <%=past_reservation.start_date%> ~ <%=past_reservation.end_date%></div>
+         <div class="card-body d-flex justify-content-around">
+         <h5 class="card-title">商品名：<%=past_reservation.package.package_name%></h5>
+         <p><%=link_to "詳細を確認する", reservation_path(past_reservation.id) %></p>
+         <p><%=link_to "この商品にコメントする", new_package_comment_path(past_reservation.package.id)%></p>
+         <p class="card-text">予約料金/名：<%=past_reservation.package.price%>円</p>
+             <% if past_reservation.package.images == nil %>
+             <%= image_tag "/assets/default_post.png", class: "image-style-package" %>
+             <% else %>         
+             <%= image_tag past_reservation.package.images[0].variant(resize: '250x250')%> 
+             <% end %>
+        </div>
+       </div>
+  <% end %>
+
+<%=link_to "前のページに戻る", :back%>  

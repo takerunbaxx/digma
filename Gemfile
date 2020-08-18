@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+ gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -48,6 +48,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-byebug'
 end
 
 
@@ -56,17 +59,27 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "kaminari"
  
-gem 'pry-byebug', group: :development
-
 gem 'country_select'
 
 gem "jquery-rails"
+
+gem 'jquery-turbolinks'
 
 gem 'carrierwave'
 
 gem 'mini_magick'
 
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-end
+gem 'devise'
+
+gem 'omniauth-twitter'
+
+gem 'fullcalendar-rails'
+
+gem 'momentjs-rails'
+
+#gem "aws-sdk-s3", require: false
+
+gem 'image_processing', '~> 1.2'
+
+gem 'payjp'
+

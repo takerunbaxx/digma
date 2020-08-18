@@ -16,21 +16,27 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
-        
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://kit.fontawesome.com/f4df487785.js" crossorigin="anonymous"></script>
-    
+
+   <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+   <script>normalBuild = jQuery.noConflict(true);</script>
+   <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+   <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+<!--script src="https://kit.fontawesome.com/f4df487785.js" crossorigin="anonymous"></script-->
+
     
   </head>
 
-  <body>
-    <%=render "layouts/header" %>
+  <body data-turbolinks="false">
+        <%=render "layouts/header" %>
+      <!--p id="error_explanation" class="notice alert"><!%= notice %></p-->
     <div class="container">
+    <%= render 'layouts/flash_messages' %>      
     <%= yield %>
     </div>
-    <%=render "layouts/footer"%>
+    
+    <%=render "layouts/footer" %>
+    
   </body>
 </html>
+
+

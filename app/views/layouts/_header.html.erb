@@ -1,20 +1,42 @@
 <header>
     
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"> Digma</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-family: cooper black;">
+        <%=link_to "DIGMA", root_path, class: "navbar-brand" %>
 
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
      </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-           <li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
-           <li class="nav-item"><a class="nav-link" href="#">Features</a> </li>
-           <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-           <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
-           <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
-           <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+        <ul class="navbar-nav" style="font-family: Hiragino Sans;">
+            <% if user_signed_in? %>
+           <li class="nav-item"><%= link_to current_user.username, user_path(current_user.id), class: "nav-link" %></li>
+           <li class="nav-item"> <%= link_to "ユーザー情報","#", class: "nav-link" %></li>
+           <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "本当にログアウトしますか？" }, class: "nav-link" %> </li>
+           <li class="nav-item"> <%= link_to "ユーザー登録情報編集", edit_user_registration_path , class: "nav-link"%></li>
+           <li class="nav-item"><%= link_to "予約の確認", reservations_path, class: "nav-link" %></li>
+           <li class="nav-item"><%= link_to "施設一覧から探す", admins_path, class: "nav-link" %></li> 
+           <li class="nav-item"><%= link_to "商品カテゴリから探す", "#", class: "nav-link"%></li> <!--ロケーションから探す。-->
+
+           <% elsif admin_signed_in? %>
+           <li class="nav-item"><%= link_to current_admin.admins_name, admin_path(current_admin.id), class: "nav-link" %></li>
+           <li class="nav-item"><%=link_to "商品作成ページ", new_package_path, class: "nav-link" %> </li>
+           <li class="nav-item"><%=link_to "商品一覧ページ", packages_path, class: "nav-link" %> </li>
+           <li class="nav-item"><%=link_to "予約カレンダーの確認", "#", class: "nav-link" %> </li>
+           <li class="nav-item"> <%= link_to "施設情報の登録・編集", profile_edit_path , class: "nav-link"%></li>
+           <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "本当にログアウトしますか?" }, class: "nav-link" %> </li>
+           <% end %>
+           
+           <% unless signed_in? %>
+           <li class="nav-item"> <%= link_to "新規登録", new_user_registration_path, class: "nav-link"%></li>
+           <li class="nav-item"><%=link_to "ログイン", new_user_session_path, class: "nav-link" %> </li>
+           <li class="nav-item"><a class="nav-link" href="#">Disabled</a></li>
+           <li class="nav-item"><a class="nav-link" href="#">Disabled</a></li>
+           <li class="nav-item"> <%= link_to "施設様/事業者側--新規登録画面", new_admin_registration_path, class: "nav-link"%></li>
+           <li class="nav-item"><%=link_to "施設様/事業者--ログイン", new_admin_session_path, class: "nav-link" %> </li>
+
+             <% end %>
         </ul>
+        
      </div>
     </nav>
 

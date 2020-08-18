@@ -1,0 +1,58 @@
+ <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+        <div class="col-md-5 px-0 text-center">
+          <h1 class="display-4 font-italic bg-secondary border border-color-light rounded">商品パッケージの作成</h1>
+        </div>
+          <p class="lead my-3">商品パッケージを作成することができます。<br>
+          こちらにご記載いただいた内容は、商品として登録され、予約可能商品となります。<br>
+          本商品パッケージに関わる写真を最低２枚は添付アップロードしてください。（最大３枚）</p>
+</div>
+
+<div class="package-create py-2">
+     <%=form_with(model: @package, local: true) do |f|%>
+
+  <div class="images-field clearfix">
+    <div class="package-items form-group">
+      <%=f.label :package_image, "画像をアップロードできます", class: "ef"%><br>
+      <%=f.text_field :package_image, class: "package-text"%><br>
+      <%=f.label :images, "画像名を入力してください。", class: "ef"%><br>
+      <%=f.file_field :images, multiple: true, direct_upload: true%>
+    </div>
+      <%# if @package.images.attached? %>
+      <%# @package.images.each do |image| %>
+      <!--div class="image-box">
+        <%#= image_tag image.variant(resize: "280x280") %>
+         <p> <%#= image.filename %> </p>
+      </-->
+      <%# #end %>
+      <%# end %>
+  </div>
+    <hr>
+    <hr>
+    <div class="package-items form-group">
+      <%=f.label :package_name, "パッケージ商品名を入力してください", class: "ef"%>
+      <%=f.text_field :package_name, class: "package-text"%>
+    </div>
+    <div class="package-items form-group">
+      <%=f.label :package_outline, "商品の見出しを入力してください。", class: "ef"%>
+      <%=f.text_area :package_outline, class: "package-text"%>
+    </div>
+    <div class="package-items form group">
+      <%=f.label :package_detail, "商品の説明を入れてください（１）", class: "ef"%>
+      <%=f.text_area :package_detail, class: "package-text"%>
+    </div>
+    <div class="package-items">
+      <%=f.label :package_sumary, "商品の説明を入れてください（２）", class: "ef"%>
+      <%=f.text_area :package_summary, class: "package-text"%>
+    </div>
+    <div class="package-items">
+      <%=f.label :price, "商品の価格を入れてください", class: "ef"%>
+      <%=f.number_field :price, class: "package-text"%>
+    </div>
+    
+      <%=f.submit "商品の作成", class: "btn btn-outline-info"%>
+     <% end %>
+</div>
+
+
+
+

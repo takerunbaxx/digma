@@ -1,0 +1,30 @@
+<div class="admin-signin bg-dark p-3" style="color: #FFF; font-family: Hiragino Sans;">
+
+
+<h2>施設（事業者）様用ログイン画面</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-group">
+    <%= f.label :email, "E-mailアドレスを入力してください。" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, "パスワードを入力してください。" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="form-group">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me, class: "form-control" %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.submit "ログイン", class: "btn btn-outline-success" %>
+  </div>
+<% end %>
+</div>
+
+<%#= render "admins/shared/links" %>
