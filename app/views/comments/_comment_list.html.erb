@@ -1,0 +1,51 @@
+
+ <h4 class="font-weight-bold"><%= comments.count %> 件のコメント</h4>
+ <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る</h6>
+ <ul class="my-3 p-5 bg-white rounded shadow-sm">
+  <% comments.first(2).each do |comment| %>
+  <% unless comment.id.nil? %>
+    <li class="comment-container">
+        <div class="comment-box border-bottom">
+            <div class="comment-text">
+             <p><%= "@#{comment.user.username}"%> さんからのコメント</p>
+              <div class="comment-entry" style="display: flex">
+               <h6><i class="far fa-comment-dots"></i></h6><p><%= comment.content %></p>
+                 <p class="pr-5"><span class="comment-date pull-right"> <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></span></p>
+                 <div class="star-show" data-score=<%=comment.score%>> <span><%=comment.score%> 点 </span></div>
+                <% if comment.user == current_user %>
+                   <p><%= link_to package_comment_path(comment.package_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+                   <i class="fas fa-trash fa-lg" style="color: black;"></i> コメントを削除する <% end %></p>
+                <% end %> 
+             </div>
+            </div>
+        </div>
+    </li>
+  <% end %>
+<% end %>
+
+
+<!-- コメント内容(3件目以降) ------------------------------------------------------------------>
+    <div class="collapse" id="collapseExample">
+        <% comments.offset(2).each do |comment| %>
+            <% unless comment.id.nil? %>
+                <li class="comment-container">
+                  <div class="comment-box border-bottom">
+                    <div class="comment-text">
+                     <p><%= "@#{comment.user.username}"%> さんからのコメント</p>
+                      <div class="comment-entry" style="display: flex">
+                          <h6><i class="far fa-comment-dots"></i></h6><p><%= comment.content %></p>
+                          <p class="pr-5"><span class="comment-date pull-right"> <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></span></p>
+                          <div class="star-show" data-score=<%=comment.score%>> <span><%=comment.score%> 点 </span></div>
+                         <% if comment.user == current_user %>
+                       <p><%= link_to package_comment_path(comment.package_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+                         <i class="fas fa-trash fa-lg" style="color: black;"></i> コメントを削除する <% end %></p>
+                        <% end %> 
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+            <% end %>
+    </div>
+
+</ul>

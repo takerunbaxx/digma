@@ -1,0 +1,64 @@
+ 
+ <div class="offset-sm-2 col-sm-8 bg-secondary text-center">
+     <h1>予約の確認</h1>
+ </div>
+ 
+ <table class="form-table bg-light">
+    <tbody>
+      <tr>
+        <th>予約日時</th>
+          <td>予約（訪問予定）時間 : <%=@reservation.start_date%> 〜　終了時間：<%=@reservation.end_date%></td>
+        </tr>
+      <tr>
+        <th>予約者名</th>
+          <td> <%=@reservation.name%> 様</td>
+      </tr>
+      <tr>
+        <th>予約施設名</th>
+          <td><%=@reservation.package.admin.facility_name%>　/  お支払い合計：参加者数：<%=(@reservation.participants)%> 名　x 　1名あたり料金: <%=(@reservation.package.price).to_i%> 円 ＝　 <%=(@reservation.participants).to_i*(@reservation.package.price).to_i%> 円</td>
+       </tr>
+      <tr>
+        <th>予約パッケージ（商品）</th>
+        <td><%=@reservation.package.package_name%></td>
+      </tr>
+      <tr>
+        <th>施設への問合せ</th>
+        <td><%=@reservation.other_request%></td>
+      </tr>
+       <tr>
+        <th>予約者連絡番号</th>
+        <td><%=@reservation.user_phone%></td>
+      </tr>
+    　<tr>
+        <th>予約者Eメールアドレス</th>
+        <td><%=@reservation.reservation_email%></td>
+      </tr>
+    　<tr>
+        <th>キャンセルポリシー</th>
+        <td><p>
+▼キャンセル料金▼
+日数に応じて下記の通りキャンセル料金が発生いたしますのでご注意ください。
+
+3日前～前日のキャンセル・・・50％
+当日または無連絡のキャンセル・・・100％
+
+※ネットでのご予約のキャンセルは3日前の17時までとなっております。以降のキャンセルは必ずキャンプ場まで直接ご連絡ください。
+※気象状況等により、安全にご利用いただけないと当方が判断した場合営業を中止させて頂くことがあります。
+
+※以下の場合、キャンセル料は発生いたしません。
+・場内を閉鎖する場合
+・気象庁により当キャンプ場が台風の暴風警戒区域に入ると予報が発表された場合
+・ご宿泊・ご利用当日、気象庁から該当地域へ気象警報が発令された場合
+・ご利用日前に気象警報が発令され、ご利用当日まで状況が改善されないと判断できる場合
+・入院を伴う怪我・事故等が参加前に発生した場合
+
+        </p></td>
+      </tr>
+      
+      
+      
+    </tbody>
+  </table>
+  
+  
+  <%=link_to "前のページに戻る", :back%>  

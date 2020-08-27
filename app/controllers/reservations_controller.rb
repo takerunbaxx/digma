@@ -1,10 +1,12 @@
 class ReservationsController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:index, :new,:show,:create]
+  before_action :authenticate_admin!, only: [:adminside_index]
   
   def index
     require "date"
-    @reservations=Reservation.all.order(id: :desc).page(params[:oage]).per(25)
-    @past_reservations=Reservation.where("start_date < ?", Date.today)
+    @reservations=current_user.reservations.order(id: :desc).page(params[:page]).per(25)
+    @past_reservations=current_user.reservations.where("start_date < ?", Date.today)
+    @liked_admin = current_user.likings.order(id: :desc).page(params[:page]).per(25)
   end
   
   def new
@@ -24,15 +26,27 @@ class ReservationsController < ApplicationController
     if @reservation.save!
     flash[:success] = "予約が完了しました"
     redirect_to user_url(current_user.id)
+    package.create_notification_comment!(current_user)
     end
   end
   
   def destroy
     package=Package.find(params[:id])
     current_user.cancel(package)
-    flash[:notice] = "予約をキャンセルしました"
+    flash[:danger] = "予約をキャンセルしました"
     render reservations_path
   end
+  
+  def adminside_index
+    packages = current_admin.packages
+    @adminside_reservations = Reservation.where(package_id: packages ).order(id: :desc).page(params[:oage]).per(25)
+  end
+  
+  def adminside_show
+   @reservation = Reservation.find(params[:id])
+
+  end
+  
 
 
   #def reserving

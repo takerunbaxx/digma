@@ -39,7 +39,9 @@
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
     scoreName: 'comment[score]', // reviewカラムに保存するので忘れないように
-    half: true, // ★の半分の入力を行う
+    //half: true, // ★の半分の入力を行う
+    targetType: 'number',
+    targetKeep: true,
     click: function(score, e) { 
         $("#comment_star").val(score) }
     //score: function() {  

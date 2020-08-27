@@ -1,9 +1,11 @@
 class PackagesController < ApplicationController
   before_action :correct_admin, only: [:destroy]
 
-def index  
-  @packages=Package.with_attached_images.order(id: :desc).page(params[:page]).per(6)
+def packs_index
+  @admin = Admin.find(params[:id])
+  @packages = @admin.packages.with_attached_images.order(id: :desc).page(params[:page]).per(6)
 end
+  
 
 def new
   @package=Package.new
@@ -14,7 +16,7 @@ def create
   @package=current_admin.packages.build(package_params)
   if @package.save
       flash[:success]="パッケージ商品を作成しました"
-      redirect_to packages_url
+      redirect_to packs_index_admin_url(current_admin.id)
   else
       flash[:secondary]="パッケージ商品を作成しました"
       render :new
@@ -23,6 +25,13 @@ end
 
 def show
   @package=Package.find(params[:id])
+  if @package.comments.blank?
+    @average_score = 0
+  else
+    @average_score = @package.comments.average(:score).round(2)
+  end
+  @admin = @package.admin
+  @comments = @package.comments.order(id: :desc)
 end
 
 def edit
@@ -46,11 +55,10 @@ end
 
 
 
-
 private
 
 def package_params
-  params.require(:package).permit(:package_name, :price, :package_image, :package_outline, :package_detail, :package_summary, :user_id, images: [])
+  params.require(:package).permit(:package_name, :price, :package_outline, :package_detail, :package_summary, :user_id, package_images: [],images: [])
 end
 
 def correct_admin
@@ -59,7 +67,6 @@ def correct_admin
       redirect_to root_url
     end
 end
+
+
 end
-
-
-

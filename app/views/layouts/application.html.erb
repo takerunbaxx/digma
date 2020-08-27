@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="ja">
+<html lang="ja">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,17 +23,18 @@
    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
 <!--script src="https://kit.fontawesome.com/f4df487785.js" crossorigin="anonymous"></script-->
 
-    
-  </head>
+</head>
 
-  <body data-turbolinks="false">
-        <%=render "layouts/header" %>
-      <!--p id="error_explanation" class="notice alert"><!%= notice %></p-->
-    <div class="container">
+ <body>
+   
+    <%=render "layouts/header" %>
     <%= render 'layouts/flash_messages' %>      
+   <!--p class="notice"><%# notice %></p-->
+   <p class="alert"><%= alert %></p>
+    <div class="container-fluid flex-fill">
     <%= yield %>
     </div>
-    
+   
     <%=render "layouts/footer" %>
     
   </body>

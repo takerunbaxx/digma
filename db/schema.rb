@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_14_083349) do
+ActiveRecord::Schema.define(version: 2020_08_25_092607) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_08_14_083349) do
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "package_id", null: false
-    t.integer "score"
+    t.integer "score", default: 0, null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,25 +79,36 @@ ActiveRecord::Schema.define(version: 2020_08_14_083349) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "day_title"
-    t.string "day_note"
-    t.text "day_detail"
-    t.datetime "day_start"
-    t.datetime "day_end"
-    t.string "day_color"
-    t.boolean "allday"
-    t.bigint "user_id"
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "admin_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_events_on_user_id"
+    t.index ["admin_id"], name: "index_likes_on_admin_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "admin_id"
+    t.bigint "package_id"
+    t.bigint "comment_id"
+    t.string "action"
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "reservation_id"
+    t.index ["admin_id"], name: "index_notifications_on_admin_id"
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["package_id"], name: "index_notifications_on_package_id"
+    t.index ["reservation_id"], name: "index_notifications_on_reservation_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "packages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "admin_id"
     t.string "package_name", null: false
     t.integer "price", null: false
-    t.string "package_image", null: false
     t.text "package_outline", null: false
     t.text "package_detail", null: false
     t.text "package_summary", null: false
@@ -157,7 +168,13 @@ ActiveRecord::Schema.define(version: 2020_08_14_083349) do
   add_foreign_key "cards", "users"
   add_foreign_key "comments", "packages"
   add_foreign_key "comments", "users"
-  add_foreign_key "events", "users"
+  add_foreign_key "likes", "admins"
+  add_foreign_key "likes", "users"
+  add_foreign_key "notifications", "admins"
+  add_foreign_key "notifications", "comments"
+  add_foreign_key "notifications", "packages"
+  add_foreign_key "notifications", "reservations"
+  add_foreign_key "notifications", "users"
   add_foreign_key "packages", "admins"
   add_foreign_key "reservations", "packages"
   add_foreign_key "reservations", "users"

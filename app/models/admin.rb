@@ -6,7 +6,11 @@ class Admin < ApplicationRecord
   
   #belongs_to :location, dependent: :destroy
   has_many :packages, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", dependent: :destroy
   has_one_attached :avator
+  
+  validates :avator, presence:  true
   
   def self.search(keyword)
       if keyword
@@ -17,5 +21,17 @@ class Admin < ApplicationRecord
       end
       
   end
+  
+  def create_notification_like!(current_user)
+    temp = Notification.where(["user_id = ? and admin_id = ? and action = ? ", current_user.id, id, 'like'])
+    if temp.blank?
+      notification = current_user.notifications.new(
+        admin_id: id,
+        action: 'like'
+      )
+      notification.save if notification.valid?
+    end
+  end
+  
 
 end

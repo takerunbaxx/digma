@@ -1,0 +1,11 @@
+<h2 style="color:white;">施設カテゴリによる検索</h2>
+
+<div class="mt-5">
+<%= search_form_for @admins_search, local: true, id: "search_form", url: search_index_admins_path do |f| %>
+  <div class="form-group">
+  <%= f.label :admins_category, "Keyword" %>
+  <%=f.select :admins_category_eq, [ ["ふらっと観光","ふらっと観光"], ["ガッツリ観光","ガッツリ観光"], ["体験・伝統産業", "体験・伝統産業"], ["地域グルメ", "地域グルメ"], ["お酒","お酒"], ["その他","その他"]], autofocus: true, autocomplete: "admins-category", prompt: "施設のカテゴリを選択してください", class: "ef" %>
+  </div>
+  <%= f.submit "検索する" %>
+<% end %>
+</div>

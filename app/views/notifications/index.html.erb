@@ -1,0 +1,18 @@
+
+<ul class="bg-light rounded">
+        <h3 class="text-center" style="font-family: Hiragino Sans;">＊通知一覧＊</h3>
+  <div class="col-sm-4 border-bottom mb-5">
+    <%= link_to notification_path(@notifications), method: :delete do %>
+        <i class="fas fa-trash fa-lg" style="color: black;"></i>
+        <h7 style="color: black;">通知を全て削除する</h7>
+    <% end %> 
+  </div>
+    <% if @notifications.exists? %>
+    <div class="users-index pl-5">
+        <%= render @notifications %>
+        <%= paginate @notifications %>
+    </div>
+    <% else %>
+    <p>お知らせする通知はございません。</p>
+    <% end %>
+</ul>

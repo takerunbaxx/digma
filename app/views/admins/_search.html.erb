@@ -1,0 +1,25 @@
+<div class="d-md-flex flex-md-equal w-100 my-md-2 pl-md-3">
+<% admins.each do |admin|%>
+  <div class="card round box-shadow bg-dark mr-md-3 pt-1 px-3 pt-md-1 px-md-5 text-center text-white overflow-hidden border border-secondary">
+        <div class="my-3 py-3">
+          <h2 class="display-5 p-2 bg-success border border-secondary rounded"><%=admin.facility_name%></h2>
+          <p>カテゴリ：  <%=admin.admins_category%></p>
+        </div>
+        <div>
+           <p class="bg-secondary">価格: &nbsp;<%=admin.packages.minimum(:price)%> &nbsp;円〜</p>
+          <%=image_tag admin.avator.variant(resize: "320x320"), class: "image-style-search"%> 
+        </div>
+    <section class="d-flex">
+       <%if current_user%>
+      <div class="like_form_<%= admin.id %> pt-3"> <%=render "likes/like_button", admin: admin%></div>
+      <%end%>
+      <div class="result-content pt-2 pl-5"><%=link_to "施設の詳細を見る >>", admin_path(admin.id), class: "btn btn-info" %></div>
+    </section>
+  </div>
+<%end%>
+</div>
+      <%= paginate admins %>
+  
+<section class="back-to">
+    <%=link_to "前のページに戻る", :back, class: "btn btn-success" %>
+</section>

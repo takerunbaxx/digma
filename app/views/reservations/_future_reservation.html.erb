@@ -13,10 +13,10 @@
              <%= image_tag reservation.package.images[0].variant(resize: '250x250')%> 
              <% end %>
         </div>
+          <%=link_to "この予約をキャンセルする", reservation_path(reservation.id), method: :delete, data: { confirm: 'よろしいですか？' }, class: "btn btn-danger" %>
        </div>
     <% end %>
 <% end %>
 
-<%=link_to "前のページに戻る", :back%>  
 
 

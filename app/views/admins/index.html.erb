@@ -3,7 +3,7 @@
 
 <section class="jumbotron text-center">
     <div class="container">
-      <h1>検索施設一覧  <span class="badge badge-secondary">該当件数●●件</span> </h1>
+      <h1>施設一覧  <span class="badge badge-secondary">該当件数<%=@admins.count%>件</span> </h1>
     </div>
 </section>
   
@@ -14,8 +14,9 @@
           <div class="card mb-4 shadow-sm">
             <div class="d-flex pl-2">
           <%#= image_tag admin.admin_top_image.variant(resize: '300x400')%>
-              <section class="pt-3 pl-3">
-                <h6>施設名： <%=admin.admins_name%></h6>
+              <section class="pt-3 pl-3 d-flex">
+                <h6 class="mr-5">施設名： <%=admin.facility_name%></h6>
+                <div class="like_form_<%= admin.id %>"> <%=render "likes/like_button", admin: admin%></div>
               </section>
             </div>
             <div class="card-body">

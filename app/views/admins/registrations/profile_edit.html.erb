@@ -1,9 +1,9 @@
-    <section class="jumbotron text-center bg-link" style="font-family: Hiragino Sans;">
+    <section class="jumbotron text-center box-shadow bg-link" style="font-family: Hiragino Sans;">
         
           <h1 class="jumbotron-heading"><i class="far fa-address-card fa-4x"></i><br> 施設プロフィール情報を入力してください。</h1>
           <p class="lead text-muted">こちらに記載された情報は、ユーザー側のページに表示されます。</p>
     </section>
-    
+  <div class="bg-dark p-2 border border-link mx-auto">
     <%=form_with(model: current_admin, url: profile_update_path, method: :patch ) do |f| %>
     <%= render "layouts/error_messages", model: current_admin %>
 
@@ -56,12 +56,12 @@
     
     <div class="edit-profile">
       <%= f.label :admins_category, "＊　施設に該当するジャンルを選択してください。" %><br />
-      <%= f.select :admins_category, [ ["ふらっと観光",1], ["ガッツリ観光",2], ["体験・伝統産業",3], ["地域グルメ", 4], ["お酒",5], ["その他",6]], autofocus: true, autocomplete: "admins-category", prompt: "施設のカテゴリを選択してください", class: "ef" %>
+      <%= f.select :admins_category, [ ["ふらっと観光", "ふらっと観光"], ["ガッツリ観光", "ガッツリ観光"], ["体験・伝統産業", "体験・伝統産業"], ["地域グルメ", "地域グルメ"], ["お酒","お酒"], ["その他","その他"]], autofocus: true, autocomplete: "admins-category", prompt: "施設のカテゴリを選択してください", class: "ef" %>
     </div>
     
      <div class="edit-profile" style="color: #fff;">
       <%=f.label :avator, "＊　施設の写真を掲載できます。" %><br>
-      <%=f.file_field :avator, direct_upload: true, class: "form-control"%>
+      <%=f.file_field :avator, direct_upload: true, class: "bg-dark"%>
     </div>
     <div class="edit-profile">
       <%# if @admin.avator.attached? %>
@@ -75,7 +75,9 @@
     </div>
     <% end %>
     
-    <div>
+</div>
+    
+    <div class="pt-5">
       <p><%= link_to "登録Eメール・パスワードの変更", edit_admin_registration_path %></p>
       <p><%= link_to "前のページに戻る", :back %></p>
     </div>

@@ -1,7 +1,13 @@
-      <h1 class="bg-secondary p-2 rounded text-center">作成した商品一覧</h1>
+ 
+ <% if current_admin%>
+ 
+ <h1 class="bg-secondary p-2 rounded text-center">作成した商品一覧</h1>
       <!--p class="lead text-muted"><%#@count_posts%> posts you have now.</p-->
+  <%else%>
+ <h1 class="bg-secondary p-2 rounded text-center">施設商品一覧</h1>
+  <%end%>
   
-
+  
 <div class="post-index pt-4">
 <% @packages.each do |package|%>
     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative br-20 bg-light">
@@ -21,6 +27,7 @@
        <div class="p-3">
         <%=image_tag package.images[0].variant(resize: "250x350")%>
        </div>
+
   </div>
   <%end%>
 </div>

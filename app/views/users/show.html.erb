@@ -1,1 +1,26 @@
-<h1><%=current_user.username%>さんのユーザーページ</h1>
+
+<div class="row">
+    
+   <div class="split left" style="color: #000033;">
+      <div class="centered">
+         <%=image_tag "default.jpeg"%>
+            <p class="lead">こんにちは</p>
+            <h2><%=current_user.username%>さん<br>のユーザーページ</h2>
+      </div>
+   </div>
+
+   <div class="split right">
+       <div class="centered">
+          <img src="https://img.icons8.com/ios-filled/100/000000/japan-map.png"/>
+       <p class="mt-3"><span><i class="fas fa-check"></i></span>NOTICE HERE</p>
+      <ul>
+        <li><h5>今までの予約数合計は<%=@count_user%>個です。</h5></li>
+         <% if @future_reservation.blank?%>
+        <li> <h5>直近の予約がありません</h5></li>
+         <% else %>
+        <li> <h5>次回の出発日は<span style="border-bottom: solid 1px red;"><%=@future_reservation.minimum(:start_date)%></span>です。</h5></li>
+         <%end%>
+      </ul>
+       </div>
+   </div>
+</div>

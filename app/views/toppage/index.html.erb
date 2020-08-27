@@ -21,7 +21,7 @@
       </div>
                 
                 <h4 id="typing1">日本の隅々まで様々な施設の予約ができる、それが　 "Digma"</h4>
-                <h4 id="typing2">予約金なし、キャンセルポリシー一律。全てカード・オンライン決済。Digmaで予約してみよう</h4>
+                <h4 id="typing2"></h4>
       
 </div>
 
@@ -30,6 +30,17 @@
   $('h1').hide().fadeIn(3000);
   
   $('h2').hide().fadeIn(3000);
+
+const typing = (element, sentence) => {
+  [...sentence].forEach((character, index) => {
+    setTimeout(() => {
+      document.querySelector(element).textContent += character;
+    }, 50* ++index);
+  });
+}
+
+//typing('#typing1', "日本の隅々まで様々な施設の予約ができる、それがDigma。");
+typing("#typing2", " 予約金なし、キャンセル規約一律。全てオンライン決済。Digmaで予約してみよう。");
 
 </script>
 

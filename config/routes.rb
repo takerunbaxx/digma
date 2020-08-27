@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'likes/index'
+  get 'likes/create'
+  get 'likes/destroy'
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 #devise_for :admins
 root to: "toppage#index" 
+get "cancel-policy", to: "toppage#cancel_policy"
+get "company-detail", to: "toppage#company"
+get "howtouse", to: "toppage#how_to"
 
 devise_for :users, controllers: {
   registrations: 'users/registrations',
@@ -22,22 +28,36 @@ end
  
   resources :users, only: [:show] do
   member do
-    get :user_reservation end  #user側の入力一覧。 
+    get :user_reservation 
+    get :likes_list  #user側の入力一覧。 
+    get :user_about  end 
   end
   
   
   resources :admins, only:[:show, :index] do
+    member do
+      get "packs_index", to: "packages#packs_index" end
     collection do
-      get :search_result end
+      get :search_result 
+      get :search_bycategory 
+      get :search_index  end
     end
   
-  resources :packages do   
-    resources :reservations, only:[:new, :create, :destroy] #user側予約の入力フォーム、user側のshow、cancelのdestroy
+  resources :packages, only:[:new, :create, :show, :edit, :update, :destroy] do   
+    resources :reservations, only:[:new, :create] 
     resources :comments, only:[ :index,:new, :create, :destroy ]
   end
-  resources :reservations, only:[:index, :show]
   
-  resources :events
+  
+  resources :reservations, only:[:index, :show, :destroy] do 
+    member do
+      get :adminside_show 
+    end
+    collection do
+      get :adminside_index end 
+  end
+  resources :notifications, only: [:index, :destroy]
   resources :cards
+  resources :likes, only:[:create, :destroy]
   
 end

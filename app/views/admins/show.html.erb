@@ -19,14 +19,14 @@
             <h4 class="my-0 font-weight-normal">商品作成状況</h4>
           </div>
           <div class="card-body">
-            <h2 class="card-title pricing-card-title">現在 <%=@count_packages%>つの商品パッケージを作成しております。</h2>
+            <h2 class="card-title pricing-card-title">現在 <span style="border-bottom:1px solid;"><%=@count_packages%></span>つの商品パッケージを作成しております。</h2>
             <ul class="list-unstyled mt-3 mb-4">
               <li>＊最大3つまで商品を作成することができます。</li>
               <li>＊商品パッケージを作成する際は、最低２枚の商品画像を登録してください。（最大３枚まで）</li>
               <li>＊施設様のプロフィール写真の登録は必須です。</li>
               <li>＊プロ会員登録をすると、さらに商品を作成、また予約データ分析などの拡張機能を使用することができます。</li>
+              <li class="mt-0"><%= link_to "プロ会員登録する", "#", class: "btn btn-lg btn-block btn-primary mt-3"%></li>
             </ul>
-            <button type="button" class="btn btn-lg btn-block btn-outline-primary">プロ会員登録する。</button>
           </div>
       </div>
         <div class="card mb-4 box-shadow">
@@ -34,14 +34,14 @@
             <h4 class="my-0 font-weight-normal">予約状況</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">現在●●件の予約があります。（過去の分は含まれておりません。）</h1>
+            <h1 class="card-title pricing-card-title">現在 <%=@count_reservations%>件の予約があります。（過去の分は含まれておりません。）</h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li></li>
-              <li>＊予約はスケジュール管理画面にて詳細をご確認ください。</li>
+              <li>＊予約は予約一覧画面にて詳細をご確認ください。</li>
               <li>＊お問い合わせ画面に、施設様のメールアドレスとお電話番号は自動で表示されることになります。</li>
               <li>＊施設情報には、休日情報等をお載せください。</li>
+             <li><%= link_to "予約一覧を確認する", adminside_index_reservations_path, class: "btn btn-lg btn-block btn-primary mt-3"%></li>
             </ul>
-            <button type="button" class="btn btn-lg btn-block btn-outline-primary">予約カレンダーへ。</button>
           </div>
         </div>
         <div class="card mb-4 box-shadow">
@@ -49,25 +49,23 @@
             <h4 class="my-0 font-weight-normal">お知らせ</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">現在、商品パッケージに対して、●●件のコメント・●●件の行ってみたいを頂いております。</h1>
+            <h1 class="card-title pricing-card-title">お知らせ <%=@count_notifications%> 件</h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li></li>
-              <li>＊</li>
+              <li>＊新規予約時、または「行ってみたい」・コメント登録がされた場合に通知が届きます。</li>
               <li>＊行ってみたい・コメントはあくまでお客様個人の感想になります。</li>
-              <li>＊もし、コメント等でご相談がございましたら弊社まで<a href="#">こちら</a>までお問い合わせください。</li>
+              <li>＊コメントの削除・管理はベーシックコースだとご利用いただけません。</li>
+             <li style="top:0;"><%= link_to "お知らせを確認する", notifications_path , class: "btn btn-lg btn-block btn-primary mt-3"%></li>
             </ul>
-            <button type="button" class="btn btn-lg btn-block btn-outline-primary">お知らせを確認する</button>
           </div>
-        </div>
       
-  </div>
+        </div>
   
+  </div>
 </div>
-
 <% else %>
 
-<main role="main" style="color:#fff;">
-  
+<main class="admin-profile" role="main" style="color:#fff;">
+   
   
   <div>
         <% unless @admin.avator == nil %>
@@ -83,10 +81,10 @@
        
         <!-- Example row of columns -->
         <div class="row">
-           <div class="col-md-2 card-header bg-secondary"><h2>POINT!! </h2></div>
+           <div class="col-md-2 card-header bg-secondary"><h2>紹介(1)</h2></div>
              <div class="col-md-4 card-body bg-dark"><p><%=@admin.introduction1%></p></div>
           
-          <div class="col-md-2 card-header bg-secondary"> <h2>POINT!!</h2></div>
+          <div class="col-md-2 card-header bg-secondary"> <h2>紹介(2)</h2></div>
             <div class="col-md-4 card-body bg-dark"><p><%=@admin.introduction2%> </p> </div>
         </div>
         
@@ -113,12 +111,12 @@
          </tr>
       </table>
    </div>
-
+   <% if current_user%>
+     <div class="mt-3 pt-1 pr-5" id="like_form_show"><%=render "likes/like_button", admin: @admin%></div>
+     <%end%>
+     
           <div class="p-5 col-md-4">
-           <%=link_to "この施設の商品を見てみる »", packages_path %> </a>
+           <%=link_to "この施設の商品を見てみる »", packs_index_admin_path(@admin.id), class: "btn btn-outline-info bg-white" %> 
           </div>
-
-
- </main>
-</div>
+</main>
 <% end %>

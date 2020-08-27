@@ -65,21 +65,17 @@ gem "jquery-rails"
 
 gem 'jquery-turbolinks'
 
-gem 'carrierwave'
-
 gem 'mini_magick'
 
 gem 'devise'
 
 gem 'omniauth-twitter'
 
-gem 'fullcalendar-rails'
-
-gem 'momentjs-rails'
-
 #gem "aws-sdk-s3", require: false
 
 gem 'image_processing', '~> 1.2'
 
 gem 'payjp'
+
+gem 'ransack'
 

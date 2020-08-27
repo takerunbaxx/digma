@@ -12,9 +12,11 @@ def create
   package =Package.find(params[:package_id])
   @comment=package.comments.build(comment_params)
   @comment.user_id=current_user.id
-  #@comment_post = @comment.post
+  @comment_package = @comment.package
   if @comment.save!
-    redirect_to package_path(package.id)
+    flash[:success]="コメントと評価をしました"
+    redirect_to current_user
+  @comment_package.create_notification_comment!(current_user, @comment.id)
   end
 end
 
