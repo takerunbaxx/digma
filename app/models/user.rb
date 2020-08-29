@@ -8,13 +8,14 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :likings, through: :likes, source: :admin
   has_many :reservations, dependent: :destroy
+  has_many :reserving, through: :reservations, source: :package
   has_many :cards
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
   
  def cancel(package)
-    complete_reservation=self.reservations.find_by(user_id: package.id)
+    complete_reservation=self.reservations.find_by(package_id: package.id)
     complete_reservation.destroy if complete_reservation
  end
  

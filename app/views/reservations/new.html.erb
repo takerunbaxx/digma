@@ -5,9 +5,9 @@
       </div>
 
           <h4 class="mb-3">予約申込内容　</h4>
-            <%= form_with(model:[@package, @package.reservations.build], local: true) do |f|%>
+            <%= form_with(model: [@package, @reservation], url: package_reservations_confirmation_path, method: :post, local: true) do |f|%>
             <%@package=Package.find(params[:package_id])%>
-            <% f.hidden_field :package_id, value: @package.id %>
+            <%= f.hidden_field :package_id, value: @package.id %>
             
             <div class="col-sm-6 mb-3 form-group">
                 <%=f.label :name, "氏名を記載してください" %>
@@ -55,52 +55,5 @@
            <%end%>
            
  </div>
-
-            <!--hr class="mb-4">
-
-            <h4 class="mb-3">お支払い</h4>
-
-            <div class="d-block my-3">
-              <div class="custom-control custom-radio">
-                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
-                <label class="custom-control-label" for="credit">クレジットカードで決済</label>
-              </div>
-
-              <div class="col-sm-6 mb-3">
-                
-                <label for="cc-name">カード名義</label>
-                ここ
-
-                <div class="invalid-feedback">
-                  Name on card is required
-                </div>
-              </div>
-              <div class=" mb-3">
-                <label for="cc-number">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" placeholder="" required="">
-                <div class="invalid-feedback">
-                  Credit card number is required
-                </div>
-              </div>
-              <div class=" mb-3">
-                <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
-                <div class="invalid-feedback">
-                  Expiration date required
-                </div>
-              </div>
-              <div class=" mb-3">
-                <label for="cc-expiration">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
-                <div class="invalid-feedback">
-                  Security code required
-                </div>
-              </div>
-            </div>
-            <hr class="text-center mb-4"-->
-          <!--script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="公開鍵"></script-->
-
-        
-        
 
     

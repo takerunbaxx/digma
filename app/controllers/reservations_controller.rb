@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new,:show,:create]
-  before_action :authenticate_admin!, only: [:adminside_index]
+  before_action :authenticate_user!, only: [:index, :new,:show,:create, :confirmation]
+  before_action :authenticate_admin!, only: [:adminside_index, :adminside_show]
   
   def index
     require "date"
@@ -14,6 +14,18 @@ class ReservationsController < ApplicationController
     @package=Package.find(params[:package_id])
   end
   
+  def confirmation
+    package=Package.find(params[:package_id])
+    @reservation=package.reservations.build(reservation_params)
+    #render :new if @reservation.invalid?
+  end
+  
+  def back
+    package=Package.find(params[:package_id])
+    @reservation=package.reservations.build(back_params)
+    render :new
+  end
+  
   def show
     @reservation=Reservation.find(params[:id])
   end
@@ -24,17 +36,17 @@ class ReservationsController < ApplicationController
     @reservation=package.reservations.build(reservation_params)
     @reservation.user_id=current_user.id
     if @reservation.save!
-    flash[:success] = "予約が完了しました"
+    flash[:notice] = "予約が完了しました"
     redirect_to user_url(current_user.id)
-    package.create_notification_comment!(current_user)
+    package.create_notification_reservation!(current_user)
     end
   end
   
   def destroy
     package=Package.find(params[:id])
     current_user.cancel(package)
-    flash[:danger] = "予約をキャンセルしました"
-    render reservations_path
+    flash[:alert] = "予約をキャンセルしました"
+    redirect_to reservations_url
   end
   
   def adminside_index
@@ -48,14 +60,16 @@ class ReservationsController < ApplicationController
   end
   
 
-
-  #def reserving
-    #Payjp.api_key = "秘密鍵"
-    #Payjp::Charge.create(
-      #amount: 809, # 決済する値段
-      #card: params['payjp-token'], # フォームを送信すると作成・送信されてくるトークン
-      #currency: 'jpy')
-  #end
+  def pay
+    require 'payjp'
+    @reservation=Reservation.find(params[:id])
+    Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+    Payjp::Charge.create(amount: (@reservation.participants).to_i*(@reservation.package.price).to_i, card: params['payjp-token'],  currency: 'jpy')
+    @reservation.update_attributes(paid: true) if @reservation.paid == false
+    flash[:notice] ="お支払が完了致しました。"
+    redirect_to @reservation
+  end
+  
   
   private
 
@@ -63,19 +77,11 @@ class ReservationsController < ApplicationController
     params.require(:reservation).permit(:start_date, :end_date, :user_id, :package_id, :participants, :name, :reservation_email, :user_phone, :other_request)
   end 
   
+  def back_params
+    params.permit(:start_date, :end_date, :user_id, :package_id, :participants, :name, :reservation_email, :user_phone, :other_request)
+  end 
   
-  #ここ以下２行は本来 create action でcontrollerに記載予定だった-------
-    #params[:reservation][:start_date] = time_schedule
-    #params[:reservation][:end_date] = time_schedule
-   #-------------------------------------------------- 
-  #def time_schedule
-    #require'date'
-    ##end_date = params[:reservation][:end_date]
-  
-    # 年月日別々できたものを結合して新しいDate型変数を作って返す
-    #Date.new start_date["start_date(1i)"].to_i,start_date["start_date(2i)"].to_i,start_date["start_date(3i)"].to_i, start_date["start_date(4i)"], start_date["start_date(5i)"]
-    #Date.new end_date["end_date(1i)"].to_i, end_date["end_date(2i)"].to_i, end_date["end_date(3i)"].to_i, end_date["end_date(4i)"].to_i, end_date["end_date(5i)"].to_i
-  #end
+
 
 
 end

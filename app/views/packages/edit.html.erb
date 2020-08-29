@@ -1,10 +1,48 @@
-<div>
-      <% if @package.images.attached? %>
-      <% @package.images.each do |image| %>
-      <div class="image-box">
-        <%= image_tag image.variant(resize: "280x280") %>
-         <p> <%= image.filename %> </p>
-      </div>
-      <% end %>
-      <% end %>
+< <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+        <div class="col-md-5 px-0 text-center">
+          <h1 class="display-4 bg-secondary border border-color-light rounded">商品パッケージの編集</h1>
+        </div>
+          <p class="my-3">商品パッケージを編集することができます。<br>
+          こちらにご記載いただいた内容は、商品として登録され、予約可能商品となります。<br>
+          本商品パッケージに関わる写真を最低２枚は添付アップロードしてください。（最大３枚）</p>
+</div>
+
+<div class=" col-sm-10 offset-sm-1 package-create py-2 text-center">
+     <%=form_with(model: @package, url: edit_package_path(@package), local: true) do |f|%>
+
+  <div class="images-field clearfix">
+    <div class="package-items form-group">
+      <%=f.label :images, "トップ画像の変更(こちらは商品ページ上部でスライド形式で掲載されます。３枚までアップロードできます。)", class: "ef"%><br>
+      <%=f.file_field :images, multiple: true, direct_upload: true, class: "bg-dark"%>
+    </div>
+    <div class="package-items form-group">
+      <%=f.label :package_images, "商品説明用の写真変更(２枚までアップロードできます。)", class: "ef"%><br>
+      <%=f.file_field :package_images, multiple: true, direct_upload: true, class: "bg-dark"%>
+  </div>
+ 
+  </div>
+    <div class="package-items form-group">
+      <%=f.label :package_name, "パッケージ商品名の変更", class: "ef"%>
+      <%=f.text_field :package_name, class: "package-text bg-lihgt p-2"%>
+    </div>
+    <div class="package-items form-group">
+      <%=f.label :package_outline, "商品の見出しの変更", class: "ef"%>
+      <%=f.text_area :package_outline, class: "package-text bg-lihgt p-2"%>
+    </div>
+    <div class="package-items form group">
+      <%=f.label :package_detail, "商品の説明の変更（１）", class: "ef"%>
+      <%=f.text_area :package_detail, class: "package-text bg-lihgt p-2"%>
+    </div>
+    <div class="package-items">
+      <%=f.label :package_sumary, "商品の説明の変更（２）", class: "ef"%>
+      <%=f.text_area :package_summary, class: "package-text bg-lihgt p-2"%>
+    </div>
+    <div class="package-items">
+      <%=f.label :price, "商品の変更価格を入れてください", class: "ef"%>
+      <p style="color:white;"><%=f.number_field :price, class: "package-text bg-lihgt p-2"%> 円</p>
+    </div>
+    <div class="package-items">
+      <%=f.submit "商品の編集", class: "btn btn-outline-info"%>
+    </div>
+     <% end %>
 </div>

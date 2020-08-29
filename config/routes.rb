@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'likes/index'
-  get 'likes/create'
-  get 'likes/destroy'
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 #devise_for :admins
 root to: "toppage#index" 
@@ -44,20 +40,22 @@ end
     end
   
   resources :packages, only:[:new, :create, :show, :edit, :update, :destroy] do   
-    resources :reservations, only:[:new, :create] 
     resources :comments, only:[ :index,:new, :create, :destroy ]
+    resources :reservations, only:[:new, :create] 
+    post "/reservations/confirmation", to: "reservations#confirmation"
+    post "/reservations/new", to: "reservations#back"
   end
   
   
   resources :reservations, only:[:index, :show, :destroy] do 
     member do
-      get :adminside_show 
-    end
+      get :adminside_show
+      post :pay end
     collection do
       get :adminside_index end 
   end
+  
   resources :notifications, only: [:index, :destroy]
-  resources :cards
   resources :likes, only:[:create, :destroy]
   
 end

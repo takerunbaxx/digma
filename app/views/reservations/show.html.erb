@@ -54,9 +54,19 @@
       
     </tbody>
   </table>
+
+<%if @reservation.paid == true%>
+<p>この予約は既に支払い済です。</p>
+<%else%>
+<div class="mt-5">
+<%= form_with(url: pay_reservation_path(@reservation.id), method: :post) do |f|%>
+  <%= f.hidden_field :participants, value: @reservation.participants %>
+  <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_72c6cbf9a2ee7d5c52728fa5"></script>
+<% end %>
+</div>
+<%end%>
   
-  
-  <%=link_to "前のページに戻る", :back%>  
+  <div class="mt-5"><%=link_to "前のページに戻る", :back%></div>
 
   
   

@@ -79,3 +79,4 @@ gem 'payjp'
 
 gem 'ransack'
 
+gem 'dotenv-rails'

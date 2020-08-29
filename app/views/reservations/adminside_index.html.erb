@@ -20,8 +20,8 @@
            <%else%>
            <div><h3 class="col-5 mb-0 bg-success border border-dark rounded p-1">商品名: <%=adminside_reservation.package.package_name%> </h3> </div>
            <%end%>
-       <p class="mb-auto text-mute"> <span><i class="far fa-clock pr-2"></i></span>  予約出発日-時間 : <%= adminside_reservation.start_date %>  から</p>
-        <p class="mb-auto text-mute"><span><i class="fas fa-clock pr-2"></i></span>  予約終了日-時間：<%= adminside_reservation.end_date%>  まで</p>
+       <p class="mb-auto text-mute"> <span><i class="far fa-clock pr-2"></i></span>  予約出発日-時間 : <%= adminside_reservation.start_date.to_s(:datetime_jp) %>  から</p>
+        <p class="mb-auto text-mute"><span><i class="fas fa-clock pr-2"></i></span>  予約終了日-時間：<%= adminside_reservation.end_date.to_s(:datetime_jp) %>  まで</p>
             <%=link_to "詳細を確認する...", adminside_show_reservation_path(adminside_reservation.id), class: "stretched-link" %>
         </div>
         

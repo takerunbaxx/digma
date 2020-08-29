@@ -39,9 +39,8 @@ class Admins::RegistrationsController < Devise::RegistrationsController
    
   def profile_update
     current_admin.assign_attributes(account_update_params)
-    current_admin.avator.attach(account_update_params[:avator])
     if current_admin.save
-    flash[:success]= 'プロフィールを更新しました'
+    flash[:notice]= 'プロフィールを更新しました'
     	redirect_to admin_url(current_admin.id)
     else 
      render "profile-edit"
@@ -70,9 +69,8 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   end
   # If you have extra params to permit, append them to the sanitizer.
    def configure_account_update_params
-     devise_parameter_sanitizer.permit(:account_update, keys: [:admins_name])
      devise_parameter_sanitizer.permit(:account_update, keys: [:avator])
-     devise_parameter_sanitizer.permit(:account_update, keys: [:admin_name])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:admins_name])
      devise_parameter_sanitizer.permit(:account_update, keys: [:introduction1])
      devise_parameter_sanitizer.permit(:account_update, keys: [:introduction2])
      devise_parameter_sanitizer.permit(:account_update, keys: [:admins_category])

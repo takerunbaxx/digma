@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
+    before_action :authenticate_user!, only: [:search_bycategory,:search_index]
 
-  
   def index
     @admins=Admin.with_attached_avator.order(id: :desc).page(params[:page]).per(6)
   end

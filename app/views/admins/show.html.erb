@@ -99,11 +99,11 @@
          </tr>
          <tr>
            <th><i class="fas fa-door-open"></i> OPEN　時間</th>
-            <td><%= @admin.open%></td>
+            <td><%= @admin.open.to_s(:time_jp)%></td>
          </tr>
          <tr>
           <th><i class="fas fa-door-closed"></i> CLOSE 時間</th>
-           <td><%=@admin.close%></td>
+           <td><%=@admin.close.to_s(:time_jp)%></td>
          </tr>
          <tr>
         <th><i class="fas fa-phone-square-alt"></i> 電話番号</th>

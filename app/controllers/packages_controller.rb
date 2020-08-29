@@ -1,5 +1,6 @@
 class PackagesController < ApplicationController
   before_action :correct_admin, only: [:destroy]
+  before_action :authenticate_admin!, only: [:new, :edit]
 
 def packs_index
   @admin = Admin.find(params[:id])
@@ -15,10 +16,10 @@ end
 def create
   @package=current_admin.packages.build(package_params)
   if @package.save
-      flash[:success]="パッケージ商品を作成しました"
+      flash[:notice]="パッケージ商品を作成しました"
       redirect_to packs_index_admin_url(current_admin.id)
   else
-      flash[:secondary]="パッケージ商品を作成しました"
+      flash[:alert]="作成できませんでした"
       render :new
   end
 end
@@ -42,14 +43,14 @@ end
 def update
   @package=Package.find(params[:id])
   if @package.update(package_params)
-      flash[:success]="パッケージ商品の編集を完了しました"
+      flash[:notice]="パッケージ商品の編集を完了しました"
       redirect_to packages_url
   end
 end
 
 def destroy
   @package.destroy
-    flash[:success] = '商品を削除しました。'
+    flash[:alert] = '商品を削除しました。'
     redirect_back(fallback_location: packages_path)
 end
 

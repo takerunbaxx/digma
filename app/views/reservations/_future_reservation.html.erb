@@ -1,19 +1,25 @@
   <% @reservations.each do |reservation|%>
   <%if reservation.start_date.present? && reservation.start_date.future? %>
-     <div class="card bg-light mb-3" style="max-width: 70rem;">
-        <div class="card-header">予約日時： <%=reservation.start_date%> ~ <%=reservation.end_date%>
-        </div>
+     <div class="card bg-light mb-3">
+        <div class="card-header d-flex">
+        <p>予約日時： <%=reservation.start_date.to_s(:datetime_jp)%> ~ <%=reservation.end_date.to_s(:datetime_jp)%></p>
+      <%if reservation.paid == true%>
+       <p class="ml-auto"><i class="far fa-check-circle fa-lg"></i>  お支払済です。</p>
+       <%else%>
+       <p class="ml-auto"><i class="fas fa-credit-card fa-lg"></i>  お支払手続きを完了してください。</p>
+       <%end%>
+       </div>
          <div class="card-body d-flex justify-content-around">
          <h5 class="card-title">商品名：<%=reservation.package.package_name%></h5>
-         <p><%=link_to "詳細を確認する", reservation_path(reservation.id) %></p>
-         <p class="card-text">予約料金/名：<%=reservation.package.price%>　円</p>
+         <p class="card-text"><%=link_to "詳細を確認する", reservation_path(reservation.id) %></p>
+         <p class="card-text"><%=link_to "この予約をキャンセルする", reservation_path(reservation.id), method: :delete, data: { confirm: 'よろしいですか？' }, class: "btn btn-danger" %></p>
+         <p class="card-text">予約料金/名：<%=reservation.package.price%>  円</p>
              <% if reservation.package.images == nil %>
              <%= image_tag "/assets/default_post.png", class: "image-style-package" %>
              <% else %>         
              <%= image_tag reservation.package.images[0].variant(resize: '250x250')%> 
              <% end %>
         </div>
-          <%=link_to "この予約をキャンセルする", reservation_path(reservation.id), method: :delete, data: { confirm: 'よろしいですか？' }, class: "btn btn-danger" %>
        </div>
     <% end %>
 <% end %>

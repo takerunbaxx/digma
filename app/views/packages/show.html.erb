@@ -112,12 +112,13 @@
     </div>
       
       <h3 class="col-5 border-bottom mb-5">お一人様価格：　<%=@package.price%>　円　（税込）</h3>
-      
-      <%unless current_admin%>
+     
+     <div class="d-flex flex-column">
+      <%if current_user%>
       <strong class="mt-5"><%=link_to "予約へすすむ >>",  new_package_reservation_path(package_id: @package.id)%></strong>
       <%end%>
       <strong class="mt-5"><%=link_to "<< 戻る",:back%></strong>
-      
+     </div>
 </main>
 
 

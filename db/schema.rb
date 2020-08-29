@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_092607) do
+ActiveRecord::Schema.define(version: 2020_08_29_104900) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 2020_08_25_092607) do
     t.string "reservation_email"
     t.string "user_phone"
     t.string "other_request"
+    t.boolean "paid", default: false, null: false
     t.index ["package_id"], name: "index_reservations_on_package_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end

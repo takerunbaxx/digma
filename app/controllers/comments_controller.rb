@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   
+  before_action :authenticate_user!, only: [:new]
+  
 def index
 end
 
@@ -14,7 +16,7 @@ def create
   @comment.user_id=current_user.id
   @comment_package = @comment.package
   if @comment.save!
-    flash[:success]="コメントと評価をしました"
+    flash[:notice]="コメントと評価をしました"
     redirect_to current_user
   @comment_package.create_notification_comment!(current_user, @comment.id)
   end
@@ -22,8 +24,10 @@ end
 
 def destroy
   @comment = Comment.find(params[:id])
-  @comment.destroy
+  if @comment.destroy
+    flash[:alert]="コメントを削除しました"
   redirect_to package_path(package.id)
+  end
 end
   
   private
