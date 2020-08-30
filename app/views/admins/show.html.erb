@@ -1,7 +1,7 @@
 
 <% if current_admin == @admin%>
 
-<div class="ammin-profile">
+<div class="ammin-profile mx-3">
   
   <div class="admin-profile-top">
       <% if @admin.avator.attached? %>
@@ -12,20 +12,18 @@
       <hr>
       <h1><%=current_admin.admins_name %>  様のトップページ</h1>
   </div>
-
   <div class="card-deck mt-5 mb-3 text-center">
       <div class="card mb-4 box-shadow">
           <div class="card-header bg-info">
             <h4 class="my-0 font-weight-normal">商品作成状況</h4>
           </div>
           <div class="card-body">
-            <h2 class="card-title pricing-card-title">現在 <span style="border-bottom:1px solid;"><%=@count_packages%></span>つの商品パッケージを作成しております。</h2>
+            <h2 class="card-title pricing-card-title"><span style="border-bottom:1px solid;"><%=@count_packages%></span>つの商品パッケージを作成しております。</h2>
+            <h2 class="card-title pricing-card-title"><i class="far fa-grin-stars fa-lg"></i>「行ってみたい！」の数<span style="border-bottom:1px solid;"><%=@count_likes%></span>  個</h2>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>＊最大3つまで商品を作成することができます。</li>
-              <li>＊商品パッケージを作成する際は、最低２枚の商品画像を登録してください。（最大３枚まで）</li>
+              <li>＊最大5つまで商品を作成することができます。</li>
+              <li>＊商品パッケージを作成する際は、必ず商品画像を登録してください。（最大３枚まで）</li>
               <li>＊施設様のプロフィール写真の登録は必須です。</li>
-              <li>＊プロ会員登録をすると、さらに商品を作成、また予約データ分析などの拡張機能を使用することができます。</li>
-              <li class="mt-0"><%= link_to "プロ会員登録する", "#", class: "btn btn-lg btn-block btn-primary mt-3"%></li>
             </ul>
           </div>
       </div>
@@ -34,7 +32,7 @@
             <h4 class="my-0 font-weight-normal">予約状況</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">現在 <%=@count_reservations%>件の予約があります。（過去の分は含まれておりません。）</h1>
+            <h1 class="card-title pricing-card-title">現在 <%=@count_reservations%>件の予約があります。<br>（未来分のみ）</h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li></li>
               <li>＊予約は予約一覧画面にて詳細をご確認ください。</li>
@@ -64,7 +62,7 @@
 </div>
 <% else %>
 
-<main class="admin-profile" role="main" style="color:#fff;">
+<main class="admin-profile mx-5" role="main" style="color:#fff;">
    
   
   <div>
@@ -76,15 +74,14 @@
   </div>
   
       
-       <h1 class="m-5 p-3 col-sm-6 bg-dark text-center"><i class="fas fa-store-alt"></i> <%=@admin.facility_name %>   の施設情報</h1>
+       <h1 class="mt-5 p-3 col-sm-6 bg-dark text-center border"><i class="fas fa-store-alt"></i> <%=@admin.facility_name %>   の施設情報</h1>
        <hr>
-       
+       <p class="lead"><i class="far fa-grin-stars fa-lg mr-3"></i><%=@count_likes%>  行ってみたい！</p>
         <!-- Example row of columns -->
-        <div class="row">
-           <div class="col-md-2 card-header bg-secondary"><h2>紹介(1)</h2></div>
-             <div class="col-md-4 card-body bg-dark"><p><%=@admin.introduction1%></p></div>
-          
-          <div class="col-md-2 card-header bg-secondary"> <h2>紹介(2)</h2></div>
+        <div class="row border border-primary">
+            <div class="col-md-2 card-header bg-secondary"><h2>紹介(1)</h2></div>
+            <div class="col-md-4 card-body bg-dark"><p><%=@admin.introduction1%></p></div>
+            <div class="col-md-2 card-header bg-secondary"> <h2>紹介(2)</h2></div>
             <div class="col-md-4 card-body bg-dark"><p><%=@admin.introduction2%> </p> </div>
         </div>
         

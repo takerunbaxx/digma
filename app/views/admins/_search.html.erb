@@ -1,12 +1,12 @@
 <div class="d-md-flex flex-md-equal w-100 my-md-2 pl-md-3">
-<% admins.each do |admin|%>
-  <div class="card round box-shadow bg-dark mr-md-3 pt-1 px-3 pt-md-1 px-md-5 text-center text-white overflow-hidden border border-secondary">
-        <div class="my-3 py-3">
+    <% admins.each do |admin|%>
+    <div class="card round box-shadow bg-light mr-md-3 pt-1 px-3 pt-md-1 px-md-5 text-center text-white overflow-hidden border border-secondary">
+        <div class="my-2 py-1">
           <h2 class="display-5 p-2 bg-success border border-secondary rounded"><%=admin.facility_name%></h2>
-          <p>カテゴリ：  <%=admin.admins_category%></p>
+          <p style="color: #000; font-family:Hiragino Sans;">カテゴリ：  <%=admin.admins_category%></p>
         </div>
         <div>
-           <p class="bg-secondary">価格: &nbsp;<%=admin.packages.minimum(:price)%> &nbsp;円〜</p>
+           <p class="bg-secondary">価格: &nbsp;<%=number_to_currency(admin.packages.minimum(:price).to_i, :unit => "￥", precision: 4, strip_insignificant_zeros: true)%> &nbsp;円〜</p>
           <%=image_tag admin.avator.variant(resize: "320x320"), class: "image-style-search"%> 
         </div>
     <section class="d-flex">
@@ -15,11 +15,7 @@
       <%end%>
       <div class="result-content pt-2 pl-5"><%=link_to "施設の詳細を見る >>", admin_path(admin.id), class: "btn btn-info" %></div>
     </section>
-  </div>
-<%end%>
-</div>
+   </div>
+    <%end%>
       <%= paginate admins %>
-  
-<section class="back-to">
-    <%=link_to "前のページに戻る", :back, class: "btn btn-success" %>
-</section>
+</div>

@@ -1,38 +1,24 @@
- <table class="form-table bg-light">
-    <tbody>
-      <tr>
-        <th>ユーザー名</th>
-          <td><%=@user.username%></td>
-        </tr>
-      <tr>
-        <th>年齢</th>
-          <td> <%=@user.age%>  歳</td>
-      </tr>
-      <tr>
-        <th>登録Emailアドレス</th>
-          <td><%=@user.email%></td>
-       </tr>
-      <!--tr>
-        <th>予約パッケージ（商品）</th>
-        <td><%#=@reservation.package.package_name%></td>
-      </tr>
-      <tr>
-        <th>施設への問合せ</th>
-        <td><%#=@reservation.other_request%></td>
-      </tr>
-       <tr>
-        <th>予約者連絡番号</th>
-        <td><%#=@reservation.user_phone%></td>
-      </tr>
-    　<tr>
-        <th>予約者Eメールアドレス</th>
-        <td><%#=@reservation.reservation_email%></td>
-      </tr-->
-      
-      
-      
-    </tbody>
-  </table>
+
+<div class=™row™>
+     <div class="col-md-10 offset-md-1">
+     <table class="form-table bg-light">
+        <tbody>
+          <tr>
+            <th>ユーザー名</th>
+              <td><%=@user.username%></td>
+          </tr>
+          <tr>
+            <th>年齢</th>
+              <td> <%=@user.age%>  歳</td>
+          </tr>
+          <tr>
+            <th>登録Emailアドレス</th>
+              <td><%=@user.email%></td>
+          </tr>
+        </tbody>
+     </table>
+    </div>
+</div>
+
   
-  
-  <%=link_to "前のページに戻る", :back%>  
+  <section class="mt-5 ml-5"><%=link_to "<< 前のページに戻る", :back %> </section>

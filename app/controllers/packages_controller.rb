@@ -44,7 +44,7 @@ def update
   @package=Package.find(params[:id])
   if @package.update(package_params)
       flash[:notice]="パッケージ商品の編集を完了しました"
-      redirect_to packages_url
+      redirect_to packs_index_admin_url(@package.admin.id)
   end
 end
 

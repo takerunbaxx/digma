@@ -16,9 +16,9 @@
           <strong class="col-sm-5 d-inline-block mb-2 text-secondary border-bottom border-dark"><span><i class="fas fa-user-check pr-5"></i></span> 予約者氏名: <%=adminside_reservation.name%> 様</strong>
           <strong class=" col-sm-5 5d-inline-block mb-2 text-dark border-bottom border-dark"><span><i class="fas fa-user-friends pr-5"></i></span> 参加予定人数: <%=adminside_reservation.participants%> 名</strong>
            <%if adminside_reservation.start_date < Date.today%>
-           <div><h3 class="col-5 mb-0 bg-secondary border border-dark rounded p-1">商品名: <%=adminside_reservation.package.package_name%> </h3> </div>
+           <div>商品名: <h4 class="col-md-10 mb-0 bg-secondary border border-dark rounded p-1"><%=adminside_reservation.package.package_name%> </h3> </div>
            <%else%>
-           <div><h3 class="col-5 mb-0 bg-success border border-dark rounded p-1">商品名: <%=adminside_reservation.package.package_name%> </h3> </div>
+           <div>商品名: <h4 class="col-md-10 mb-0 bg-success border border-dark rounded p-1"><%=adminside_reservation.package.package_name%> </h3> </div>
            <%end%>
        <p class="mb-auto text-mute"> <span><i class="far fa-clock pr-2"></i></span>  予約出発日-時間 : <%= adminside_reservation.start_date.to_s(:datetime_jp) %>  から</p>
         <p class="mb-auto text-mute"><span><i class="fas fa-clock pr-2"></i></span>  予約終了日-時間：<%= adminside_reservation.end_date.to_s(:datetime_jp) %>  まで</p>
@@ -26,7 +26,11 @@
         </div>
         
         <div class="p-3">
-            <p style="font-family:cooper black;">Digma</p>
+           <%if adminside_reservation.paid == true%>
+            <p style="font-family:cooper black;"><i class="fas fa-check-square fa-lg pr-2"></i>Digma</p>
+            <%else%>
+            <p style="font-family:cooper black;"><i class="far fa-square fa-lg pr-2"></i>Digma</p>
+            <%end%>
        </div>
 
   </div>

@@ -7,19 +7,10 @@ class Admin < ApplicationRecord
   #belongs_to :location, dependent: :destroy
   has_many :packages, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :passive_likes, class_name: "Like", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", dependent: :destroy
   has_one_attached :avator
   
-  with_options presence: true do
-  validates :avator
-  validates :admins_name
-  validates :introduction1
-  validates :introduction2
-  validates :facility_name
-  validates :homeadress
-  validates :open
-  validates :close
-  end
   
   def self.search(keyword)
       if keyword

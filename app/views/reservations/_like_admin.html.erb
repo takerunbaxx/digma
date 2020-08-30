@@ -1,24 +1,20 @@
     <% @liked_admin.each do |liked_admin|%>
      <div class="card bg-light mb-3">
-         <div class="card-body d-flex align-items-start">
-         <div>
-             <h5 class="card-title">商品名：<%=liked_admin.facility_name%></h5>
-             <section class="d-flex">
-                 <p class="card-text"><%=link_to "詳細を見る", admin_path(liked_admin.id) %></p>
-                 <p class="card-text pl-3">カテゴリ:  <%=liked_admin.admins_category%></p>
-             </section>
-             <p class="card-text"><%=liked_admin.introduction1%></p>
-         </div>
-             <section class="d-flex ml-auto">
-                 <span class="card-text box-shadow bg-success p-2 mr-2" style="height: 40px;">価格: &nbsp;<%=liked_admin.packages.minimum(:price)%> &nbsp;円〜から</span>
-                 <div class="card-img-right">
+         <div class="card-body d-flex justify-content-between">
+           <ul class="list-unstyled">
+               <li><h5 class="text-dark"><%=liked_admin.facility_name%></h5></li>
+               <li><p class="card-text"><%=link_to "詳細を見る", admin_path(liked_admin.id) %></p></li>
+               <li><p class="card-text">カテゴリ:  <%=liked_admin.admins_category%></p></li>
+               <li><p class="card-text"><%=liked_admin.supplementary_info%></p></li>
+               <p class="card-text text-muted" style="font-weight:bold;">価格: &nbsp;<%=number_to_currency(liked_admin.packages.minimum(:price).to_i, :unit => "￥", precision: 4, strip_insignificant_zeros: true)%> &nbsp;円〜から</p>
+           </ul>
+           <div>
                        <% if liked_admin.avator == nil %>
-                       <%= image_tag "/assets/default_post.png", class: "image-style-package" %>
+                       <%= image_tag "/assets/default_post.png", class: "image-style-package flex-auto d-none d-md-bloc" %>
                        <% else %>         
                        <%= image_tag liked_admin.avator.variant(resize: '200x200') , class: "card-img-right flex-auto d-none d-md-block"%> 
                        <% end %>
-                 </div>
-             </section>
+           </div>
          </div>
 
      </div>

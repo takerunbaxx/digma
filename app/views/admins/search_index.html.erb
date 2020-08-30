@@ -1,8 +1,15 @@
+<div class="mx-3">
+<h1 class="col-sm-3 rounded text-center bg-light p-3 border">検索結果</h1>
 <div class="card box-shadow bg-dark p-3">
-<h1 class="col-sm-3 rounded text-center bg-primary p-3 border">検索結果</h1>
-<% if @admins_results.present?%>
-<%=render "search", admins: @admins_results%>
-<%else%>
-<p class="card-text">該当施設はありませんでした。</p>
-<%end%>
+    <% if @admins_results.present?%>
+    <%=render "search", admins: @admins_results%>
+    <%else%>
+    <p class="card-text">該当施設はありませんでした。</p>
+    <%end%>
+</div>
+
+<section class="back-to">
+    <%=link_to "前のページに戻る", :back, class: "btn btn-success" %>
+</section>
+
 </div>

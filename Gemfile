@@ -80,3 +80,5 @@ gem 'payjp'
 gem 'ransack'
 
 gem 'dotenv-rails'
+
+gem 'jquery-bgswitcher-rails', '~> 0.0.5'

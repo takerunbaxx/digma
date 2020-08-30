@@ -26,7 +26,7 @@
     </div>
   
     <div class="edit-profile" style="color: #fff;">
-      <%=f.label :phone, "＊施設の電話番号を入力してください。" %><br>
+      <%=f.label :phone, "＊施設の電話番号を入力してください。(ハイフン抜きで半角数字でご入力ください)" %><br>
       <%=f.text_field :phone, autofocus: true, autocomplete: "phone", class: "ef" %>
     </div>
      <div class="edit-profile" style="color: #fff;">
@@ -74,5 +74,5 @@
     
     <ul class="pt-5 list-unstyled">
       <li><%= link_to "登録Eメール・パスワードの変更", edit_admin_registration_path %></li>
-      <li><%= link_to "前のページに戻る", :back %></li>
+      <li><%=link_to "<< 前のページに戻る", :back%></li>
     </ul>

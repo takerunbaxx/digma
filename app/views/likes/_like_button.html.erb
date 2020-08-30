@@ -2,11 +2,11 @@
 
 <%if current_user.liking?(admin)%>
   <%= link_to like_path(admin_id: admin.id, id: admin.id), method: :delete, remote: true do %>
-  <i class="far fa-grin-stars fa-lg"></i> <span>はずす</span>
+  <i class="like-icon far fa-angry fa-lg" style="color: #FF0000;"></i> <span class="like-t" style="color: #FF0000;">はずす</span>
   <% end %>
 <% else %>
   <%= link_to likes_path(admin_id: admin.id), method: :post, remote: true do%>
-  <i class="far fa-grin-stars fa-lg"></i> <span>行ってみたい！</span>
+  <i class="like-icon far fa-grin-stars fa-lg"></i> <span class="like-t">行ってみたい！</span>
   <% end %>
 <% end %>
 

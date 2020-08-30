@@ -34,12 +34,12 @@
             </div>
               
             <div class="col-sm-6 mb-3 form-group">
-                 <%=f.label :reservation_email, "Eメールアドレスを入力してください" %>
+                 <%=f.label :reservation_email, "Eメールアドレスを入力してください（施設からご連絡がある場合がございます）" %>
                 <%=f.email_field :reservation_email ,class: "form-control" %>
             </div>
 
             <div class="col-sm-6 mb-3 form-group">
-                <%=f.label :user_phone, "電話番号を入力してください" %>
+                <%=f.label :user_phone, "電話番号を入力してください(ハイフン抜きで半角数字でご入力ください)" %>
                 <%=f.number_field :user_phone, class: "form-control" %>
             </div>
             

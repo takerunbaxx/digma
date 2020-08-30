@@ -1,4 +1,4 @@
-<header class="mb-5">
+<header class="mb-2">
     
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
        <span style="font-family: cooper black;"> <%=link_to "DIGMA", root_path, class: "navbar-brand pr-5" %></span>
@@ -27,11 +27,21 @@
            <% end %>
            
            <% unless signed_in? %>
-           <li class="nav-item"> <%= link_to "新規登録", new_user_registration_path, class: "nav-link"%></li>
-           <li class="nav-item"><%=link_to "ログイン", new_user_session_path, class: "nav-link" %> </li>
-           <li class="nav-item"> <%= link_to "施設/事業者側--新規登録画面", new_admin_registration_path, class: "nav-link"%></li>
-           <li class="nav-item"><%=link_to "施設/事業者側--ログイン", new_admin_session_path, class: "nav-link" %> </li>
-
+           
+           <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ユーザー・ご予約者様用ページ</a>
+           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to "新規登録", new_user_registration_path, class: "nav-link"%>
+              <%=link_to "ログイン", new_user_session_path, class: "nav-link" %>
+            </div>
+           </li>
+           <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">施設・事業者様用ページ</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to "施設/事業者側--新規登録画面", new_admin_registration_path, class: "nav-link"%>
+              <%=link_to "施設/事業者側--ログイン", new_admin_session_path, class: "nav-link" %>
+            </div>
+            </li>
              <% end %>
         </ul>
         
@@ -39,4 +49,3 @@
     </nav>
 
 </header>
-      

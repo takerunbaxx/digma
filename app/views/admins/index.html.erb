@@ -1,26 +1,25 @@
 
 
 
-<section class="jumbotron text-center">
+<section class="mx-5 jumbotron text-center">
     <div class="container">
       <h1>施設一覧  <span class="badge badge-secondary">該当件数<%=@admins.count%>件</span> </h1>
     </div>
 </section>
   
-<div class="album py-5 bg-light">
+<div class="album mx-sm-5 py-5 bg-light">
     <div class="row">
        <% @admins.each do |admin| %>
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             <div class="d-flex pl-2">
-          <%#= image_tag admin.admin_top_image.variant(resize: '300x400')%>
               <section class="pt-3 pl-3 d-flex">
                 <h6 class="mr-5">施設名： <%=admin.facility_name%></h6>
                 <div class="like_form_<%= admin.id %>"> <%=render "likes/like_button", admin: admin%></div>
               </section>
             </div>
             <div class="card-body">
-              <p class="card-text"><%=admin.introduction1%></p>
+              <p class="card-text"><%=admin.supplementary_info%></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                  <%=link_to "施設について詳しく見る", admin_path(admin.id), class: "btn btn-sm btn-outline-secondary"%>

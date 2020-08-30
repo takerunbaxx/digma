@@ -8,6 +8,7 @@ private
 def counts(admin)
   @count_packages = admin.packages.count
   @count_notifications = admin.passive_notifications.count
+  @count_likes = admin.passive_likes.count
   #@count_reservations = admin.packages.reservations.count
 end
 

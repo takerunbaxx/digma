@@ -15,14 +15,16 @@ body{
 }
     
 header{
+    width: 100%;
     background-color: #333333;
     z-index: 10;
 }
 
 .container-fluid{
     flex: 1;
-    margin-top: 30px;
+    //margin-top: 20px;
     width: 100%;
+    padding-left: 0;
 }
  
 #error_explanation{
@@ -47,7 +49,7 @@ img {
 
 
 img {
-width: auto;
+//width: auto;
 max-width: 100%;
 height: auto;
 }
@@ -58,24 +60,29 @@ select#keyword{
     border: 1px solid ;
     border-color: #00008B;
     border-radius: 2px;
-    width: 30%;
 }
 
-.toppage-wrapper{
-    height: 100%;
-    width: 100%;
-    display: inline-block;
-    background-color: #333333;
-    padding-top: 100px;
-    color: #FFF;
-}
 
-.toppage-inner{
-    background-color: #333333;
-    h1 h2{
+.bg-slider .jumbotron{
+    color: #000;
+   background-color: rgba( 255, 255, 255, 0.55 );
+   h1 h3 h5{
         font-family: "Hiragino Sans";
     }
 }
+
+.bg-slider {
+  margin: 0;
+  overflow: hidden;
+	width: 100vw;
+	height: 100vh;
+	background-position: center;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 
 //toppage cancel-poloicy
 
@@ -114,6 +121,14 @@ select#keyword{
 	width: 80%;
 	margin: 40px 3%;
 }
+
+// toppage howto
+
+.how-to-use img{
+  width: 80%;
+  height: auto;
+}
+
 
 // search
 
@@ -203,10 +218,6 @@ td{
 }
 
 // search-result
-.back-to{
-    position: relative;
-    top: 200px;
-}
 
 //reservation show (予約の詳細)
  
@@ -486,7 +497,7 @@ footer.mainFooter{
     list-style: none;
     overflow: hidden;
     width: 100%;
-    margin: 200px 0 0 0;
+    margin: 40px 0 0 0;
     z-index: 10;
     //bottom: 0px;
 }
@@ -505,3 +516,21 @@ ul.footerlist{
 }
 
 
+@media all and (max-width: 670px) {
+.pay-t{
+  display: none;
+}
+
+.pay-icon{
+  display: block;
+}
+
+.like-t{
+  display: none;
+}
+
+.like-icon{
+  display: block;
+}
+
+}

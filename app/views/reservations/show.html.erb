@@ -10,7 +10,7 @@
       </tr>
       <tr>
         <th>予約施設名</th>
-          <td><%=@reservation.package.admin.facility_name%>　/  お支払い合計：参加者数：<%=(@reservation.participants)%> 名　x 　1名あたり料金: <%=(@reservation.package.price).to_i%> 円 ＝　 <%=(@reservation.participants).to_i*(@reservation.package.price).to_i%> 円</td>
+          <td><%=@reservation.package.admin.facility_name%>　/  お支払い合計：参加者数：<%=(@reservation.participants)%> 名　x 　1名あたり料金: <%=(@reservation.package.price).to_i%> 円 ＝　 <%=number_to_currency((@reservation.participants).to_i*(@reservation.package.price).to_i, :unit => "￥", precision: 4, strip_insignificant_zeros: true)%> 円</td>
        </tr>
       <tr>
         <th>予約パッケージ（商品）</th>
@@ -54,7 +54,7 @@
       
     </tbody>
   </table>
-
+<div class="ml-5">
 <%if @reservation.paid == true%>
 <p>この予約は既に支払い済です。</p>
 <%else%>
@@ -67,6 +67,6 @@
 <%end%>
   
   <div class="mt-5"><%=link_to "前のページに戻る", :back%></div>
-
+</div>
   
   
