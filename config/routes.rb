@@ -5,7 +5,7 @@ root to: "toppage#index"
 get "cancel-policy", to: "toppage#cancel_policy"
 get "company-detail", to: "toppage#company"
 get "howtouse", to: "toppage#how_to"
-
+get "admin_howto", to: "toppage#admin_howto"
 devise_for :users, controllers: {
   registrations: 'users/registrations',
   sessions: 'users/sessions'

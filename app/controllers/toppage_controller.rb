@@ -10,6 +10,9 @@ class ToppageController < ApplicationController
   def how_to
   end
   
+  def admin_howto
+  end
+  
   def cancel_policy
   end
   

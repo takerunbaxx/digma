@@ -8,29 +8,33 @@
         </ol>
          <div class="carousel-inner">
            <div class="carousel-item active">
-            
+             <% if @package.images[0] == nil %>
+           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_" x="0px" y="0px" viewBox="0 0 512 512" style="margin-left:100px; width: 70%; height: 70%; opacity: 1;" xml:space="preserve"><style type="text/css">.st0{fill:#4B4B4B;}</style><g><path class="st0" d="M0,53.579v404.841h512V53.579H0z M165.198,125.951c28.136,0,50.942,22.806,50.942,50.934   c0,28.136-22.806,50.942-50.942,50.942c-28.126,0-50.934-22.806-50.934-50.942C114.264,148.757,137.071,125.951,165.198,125.951z    M52.244,391.713l74.967-114.227c4.298-6.548,11.404-10.715,19.216-11.273c7.813-0.558,15.431,2.558,20.611,8.436l44.665,50.617   l80.938-123.157c4.641-7.06,12.51-11.32,20.965-11.32c8.445-0.01,16.333,4.232,20.983,11.282l125.157,189.641H52.244z" style="fill: rgb(75, 75, 75);"/></g></svg>
+             <%else%>
               <%= image_tag @package.images[0].variant(auto_orient: true)%> 
+              <%end%>             
               <div class="carousel-caption text-right">
                 <h4 style="font-family:cooper black;">Digma</h4>
-                <p><% @package.package_name %></p>
               </div>
           </div>
            <div class="carousel-item">
+             <% if @package.images[1] == nil %>
+           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_" x="0px" y="0px" viewBox="0 0 512 512" style="margin-left:100px; width: 70%; height: 70%; opacity: 1;" xml:space="preserve"><style type="text/css">.st0{fill:#4B4B4B;}</style><g><path class="st0" d="M0,53.579v404.841h512V53.579H0z M165.198,125.951c28.136,0,50.942,22.806,50.942,50.934   c0,28.136-22.806,50.942-50.942,50.942c-28.126,0-50.934-22.806-50.934-50.942C114.264,148.757,137.071,125.951,165.198,125.951z    M52.244,391.713l74.967-114.227c4.298-6.548,11.404-10.715,19.216-11.273c7.813-0.558,15.431,2.558,20.611,8.436l44.665,50.617   l80.938-123.157c4.641-7.06,12.51-11.32,20.965-11.32c8.445-0.01,16.333,4.232,20.983,11.282l125.157,189.641H52.244z" style="fill: rgb(75, 75, 75);"/></g></svg>
+             <%else%>
               <%= image_tag @package.images[1].variant(auto_orient: true)%> 
+              <%end%>
               <div class="carousel-caption text-right">
                 <h4 style="font-family:cooper black;">Digma</h4>
-                <p><% @package.package_name %></p>
               </div>
           </div>
            <div class="carousel-item">
              <% if @package.images[2] == nil %>
-             <%= image_tag "/assets/default_post.png", class: "image-style-package" %>
+           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_" x="0px" y="0px" viewBox="0 0 512 512" class="slide-3 ml-sm-5" style="width: 70%; height: auto; opacity: 1;" xml:space="preserve"><style type="text/css">.st0{fill:#4B4B4B;}</style><g><path class="st0" d="M0,53.579v404.841h512V53.579H0z M165.198,125.951c28.136,0,50.942,22.806,50.942,50.934   c0,28.136-22.806,50.942-50.942,50.942c-28.126,0-50.934-22.806-50.934-50.942C114.264,148.757,137.071,125.951,165.198,125.951z    M52.244,391.713l74.967-114.227c4.298-6.548,11.404-10.715,19.216-11.273c7.813-0.558,15.431,2.558,20.611,8.436l44.665,50.617   l80.938-123.157c4.641-7.06,12.51-11.32,20.965-11.32c8.445-0.01,16.333,4.232,20.983,11.282l125.157,189.641H52.244z" style="fill: rgb(75, 75, 75);"/></g></svg>
              <% else %>
               <%= image_tag @package.images[2].variant(auto_orient: true)%> 
              <% end %>
               <div class="carousel-caption text-right">
                 <h4 style="font-family:cooper black;">Digma</h4>
-                <p><% @package.package_name %></p>
               </div>
           </div>
          </div>
@@ -53,15 +57,15 @@
 
         <div class="row featurette p-2">
           <div class="col-md-7">
-            <h2 class="featurette-heading border bg-success p-3">パッケージ概要</h2><br><h4 class="text-muted"><%=@package.package_outline%></h4>
+            <section class="col-sm-8 text-center  featurette-heading border bg-success p-3"><p class="text-muted">Package Description1</p><h3>商品内容について1</h3></section><br><h6 class="text-muted"><%=@package.package_outline%></h6>
             <p class="lead"><%= @package.package_detail %></p>
-            <p>さらに詳細が必要な方は<a href="#"></a>お問い合わせください</a><p>
+            <p class="border-bottom text-center col-sm-11">さらに詳細が必要な方はお電話 <%=@package.admin.phone%> にてお問い合わせください</a><p>
           </div>
           <div class="col-md-5">
            <% if !@package.package_images[0].nil?%>
               <%= image_tag @package.package_images[0].variant(auto_orient: true)%> 
            <%else%>
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_173bde6dd2a%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_173bde6dd2a%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.1171875%22%20y%3D%22261.1%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_" x="0px" y="0px" viewBox="0 0 512 512" style="width: 300px; height: 300px; opacity: 1;" xml:space="preserve"><style type="text/css">.st0{fill:#4B4B4B;}</style><g><path class="d-block w-100 st0" d="M0,53.579v404.841h512V53.579H0z M165.198,125.951c28.136,0,50.942,22.806,50.942,50.934   c0,28.136-22.806,50.942-50.942,50.942c-28.126,0-50.934-22.806-50.934-50.942C114.264,148.757,137.071,125.951,165.198,125.951z    M52.244,391.713l74.967-114.227c4.298-6.548,11.404-10.715,19.216-11.273c7.813-0.558,15.431,2.558,20.611,8.436l44.665,50.617   l80.938-123.157c4.641-7.06,12.51-11.32,20.965-11.32c8.445-0.01,16.333,4.232,20.983,11.282l125.157,189.641H52.244z" style="fill: rgb(75, 75, 75);"/></g></svg>
            <%end%>
           </div>
         </div>
@@ -70,14 +74,14 @@
 
         <div class="row featurette p-2">
           <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading border bg-primary p-3">パッケージ内容</h2> <br><h4 class="text-muted">こんなことができます</h4>
+            <section class="col-sm-8 text-center featurette-heading border bg-primary p-3"><p class="text-muted">Package Description2</p><h3>商品内容について2</h3></section> <br><h6 class="text-muted">What you can do here!</h6>
             <p class="lead"><%= @package.package_summary%></p>
           </div>
           <div class="col-md-5 order-md-1">
            <% if !@package.package_images[1].nil?%>
               <%= image_tag @package.package_images[1].variant(auto_orient: true)%> 
            <%else%>
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_173bde6dd2a%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_173bde6dd2a%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.1171875%22%20y%3D%22261.1%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_" x="0px" y="0px" viewBox="0 0 512 512" style="width: 300px; height: 300px; opacity: 1;" xml:space="preserve"><style type="text/css">.st0{fill:#4B4B4B;}</style><g><path class="st0" d="M0,53.579v404.841h512V53.579H0z M165.198,125.951c28.136,0,50.942,22.806,50.942,50.934   c0,28.136-22.806,50.942-50.942,50.942c-28.126,0-50.934-22.806-50.934-50.942C114.264,148.757,137.071,125.951,165.198,125.951z    M52.244,391.713l74.967-114.227c4.298-6.548,11.404-10.715,19.216-11.273c7.813-0.558,15.431,2.558,20.611,8.436l44.665,50.617   l80.938-123.157c4.641-7.06,12.51-11.32,20.965-11.32c8.445-0.01,16.333,4.232,20.983,11.282l125.157,189.641H52.244z" style="fill: rgb(75, 75, 75);"/></g></svg>
            <%end%>
           </div>
         </div>
@@ -86,7 +90,7 @@
 
         <div class="row featurette p-2">
           <div class="col-md-7">
-            <h2 class="featurette-heading border bg-success p-3 ">こちらが私たちです！</h2><h4 class="text-muted">ぜひ起こしください！！</h4>
+            <section class="col-sm-8 text-center  featurette-heading border bg-success p-3 "><p class="text-muted">About us</p><h3>わたしたちについて</h3></section> <br><h6 class="text-muted">We are eagerly wating for you!</h6>
             <p class="lead"><%= @package.admin.introduction1 %></p>
           </div>
           <div class="col-md-5">
@@ -100,7 +104,7 @@
 
     <div class="col-sm-10 offset-sm-1 comments-area p-3 mb-5 border border-secondary">
       
-        <p class="text-center font-weight-bold bg-primary p-3">＊　＊　＊　＊　＊　＊　＊　＊　＊　　この商品パッケージの平均評価点　　＊　＊　＊　＊　＊　＊　＊　＊　＊</p>
+        <p class="col-sm-8 offset-sm-2 border border-light text-center font-weight-bold bg-primary p-3">＊＊この商品パッケージの平均評価点＊＊</p>
         
         <h4 class="font-weight-bold">平均点：　<%= @average_score %>　点</h4>
 
@@ -117,7 +121,6 @@
       <%if current_user%>
       <strong class="mt-5"><%=link_to "予約へすすむ >>",  new_package_reservation_path(package_id: @package.id)%></strong>
       <%end%>
-      <strong class="mt-5"><%=link_to "<< 戻る",:back%></strong>
      </div>
 </main>
 
@@ -134,3 +137,4 @@
         return $(this).attr('data-score');  } 
  });
  </script>
+ 

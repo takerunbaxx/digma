@@ -7,13 +7,13 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "admins/shared/error_messages", resource: resource %>
   
-   <div class="field form-group" style="color: #fff;">
+   <!--div class="field form-group" style="color: #fff;">
       <%=f.label :facility_name, "（１）施設の名称を入力してください。" %><br>
       <%=f.text_field :facility_name, utofocus: true, autocomplete: "name", class: "form-control bg-light border"%>
-  </div>
+  </div-->
   
   <div class="field form-group">
-    <%= f.label :admins_name, "（２）施設ユーザー名を設定してください。" %><br /><i>(ページにログインする際に必要となります。)</i><br />
+    <%= f.label :admins_name, "（２）施設ユーザー名を設定してください。" %>
     <%= f.text_field :admins_name, autofocus: true, autocomplete: "email", class: "form-control bg-light border" %>
   </div>
 
