@@ -71,7 +71,7 @@ gem 'devise'
 
 gem 'omniauth-twitter'
 
-#gem "aws-sdk-s3", require: false
+gem "aws-sdk-s3", require: false
 
 gem 'image_processing', '~> 1.2'
 
