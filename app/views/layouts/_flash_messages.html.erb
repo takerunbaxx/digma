@@ -1,3 +1,9 @@
 <% flash.each do |key, value| %>
   <%= content_tag(:div, value, class: "flash flash__#{key} col-sm-7 py-2") %>
 <% end %>
+
+<script>
+$(function(){
+  setTimeout("$('.flash').fadeOut('slow')", 7000) 
+})
+</script>
