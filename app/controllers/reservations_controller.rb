@@ -63,7 +63,7 @@ class ReservationsController < ApplicationController
   def pay
     require 'payjp'
     @reservation=Reservation.find(params[:id])
-    Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+    Payjp.api_key = ENV["PAYJP_ACCESS_KEY"] || Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     Payjp::Charge.create(amount: (@reservation.participants).to_i*(@reservation.package.price).to_i, card: params['payjp-token'],  currency: 'jpy')
     @reservation.update_attributes(paid: true) if @reservation.paid == false
     flash[:notice] ="お支払が完了致しました。"
