@@ -7,25 +7,25 @@
     <%=form_with(model: current_admin, url: profile_update_path, method: :patch ) do |f| %>
     <%= render "layouts/error_messages", model: current_admin %>
 
-    <div class="edit-profile" style="color: #fff;">
+    <div class="edit-profile col-sm-6"  style="color: #fff;">
       <%=f.label :facility_name, "＊  施設の名称を入力してください。" %><br>
       <%=f.text_field :facility_name, autofocus: true, autocomplete: "facility-name", class: "ef" %>
     </div>
   
-    <div class="edit-profile" style="color: #fff;">
+    <div class="edit-profile col-sm-6" style="color: #fff;">
       <%=f.label :prefecture_name, "＊施設所在の都道府県を選択してください。" %><br>
       <%=f.select :prefecture_name, [['北海道'], ['青森県'], ['岩手県'],['宮城県'], ['秋田県'], ['山形県'], ['福島県'], ['茨城県'], ['栃木県'],
       ['群馬県'], ['埼玉県'], ['千葉県'], ['東京都'], ['神奈川県'], ['新潟県'], ['富山県'], ['石川県'], ['福井県'], ['山梨県'], ['長野県'], ['岐阜県'],
       ['静岡県'], ['愛知県'], ['三重県'], ['滋賀県'], ['京都府'], ['大阪府'],['兵庫県'], ['奈良県'], ['和歌山県'],['鳥取県'], ['島根県'], ['岡山県'],
       ['広島県'], ['山口県'], ['徳島県'],['香川県'], ['愛媛県'], ['高知県'],['福岡県'], ['佐賀県'], ['長崎県'],['熊本県'], ['大分県'], ['宮崎県'],
       ['鹿児島県'], ['沖縄県']], prompt: "都道府県を選択してください", autofocus: true, autocomplete: "prefecture_name", class: "ef"%> <br>
-      <%=f.label :cityname, "  施設所在の市町村を記載してください。" %> <i>（例：札幌市）</i><br>
+      <%=f.label :cityname, "  施設所在の市町村を記載してください。" %> <i>（例：千代田区）</i><br>
       <%=f.text_field :cityname, autofocus: true, autocomplete: "cityname", class: "ef"%>
-      <%=f.label :homeadress, "  施設所在の続きを記載してください。" %> <br>
+      <%=f.label :homeadress, "  施設所在の続きを記載してください。" %> <i>（例：千代田3-4-1 千代田ビル４階 ）</i><br>
       <%=f.text_field :homeadress, autofocus: true, autocomplete: "homeadress", class: "ef" %>
     </div>
   
-    <div class="edit-profile" style="color: #fff;">
+    <div class="edit-profile col-sm-6"  style="color: #fff;">
       <%=f.label :phone, "＊施設の電話番号を入力してください。(ハイフン抜きで半角数字でご入力ください)" %><br>
       <%=f.text_field :phone, autofocus: true, autocomplete: "phone", class: "ef" %>
     </div>
@@ -56,7 +56,7 @@
     
     <div class="edit-profile">
       <%= f.label :admins_category, "＊施設に該当するジャンルを選択してください。" %><br />
-      <%= f.select :admins_category, [ ["ふらっと観光", "ふらっと観光"], ["ガッツリ観光", "ガッツリ観光"], ["体験・伝統産業", "体験・伝統産業"], ["地域グルメ", "地域グルメ"], ["お酒","お酒"], ["その他","その他"]], autofocus: true, autocomplete: "admins-category", prompt: "施設のカテゴリを選択してください", class: "ef" %>
+      <%= f.select :admins_category, [ ["ふらっと観光", "ふらっと観光"], ["ガッツリ観光", "ガッツリ観光"], ["体験・伝統産業", "体験・伝統産業"], ["地域グルメ", "地域グルメ"], ["お酒","お酒"],["アウトドア・キャンプ","アウトドア・キャンプ"], ["その他","その他"]], autofocus: true, autocomplete: "admins-category", prompt: "施設のカテゴリを選択してください", class: "ef" %>
     </div>
     
      <div class="edit-profile" style="color: #fff;">
