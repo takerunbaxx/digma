@@ -10,25 +10,26 @@
   
 <div class="post-index pt-4">
 <% @packages.each do |package|%>
-    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative br-20 bg-light">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success">管理施設名: <%=package.admin.facility_name%> </strong>
-           <div style="display:flex;"><h3 class="mb-0">商品名: <%=package.package_name%> </h3> </div>
-       <span class="text-muted">商品作成日 <%= package.created_at.to_s(:datetime_jp) %> 
+    <div class="row no-gutters border rounded overflow-hidden flex-sm-row mb-4 shadow-sm h-md-250 position-relative br-20 bg-light">
+        
+        
+        <div class="p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">管理施設名: <%=package.admin.facility_name%> </strong>
+            <h3 class="mb-0">商品名: <%=package.package_name%> </h3>
+            <p class="text-muted">商品作成日 <%= package.created_at.to_s(:datetime_jp) %></p>
             <p class="mb-auto">商品概要：<%=package.package_outline%></p>
             <%=link_to "詳細を確認する...", package_path(package.id), class: "stretched-link" %>
-        </div>
-        
+       </div>
         <div class="p-3">
           <% if package.admin == current_user||current_admin %>
           <%=link_to "この商品を削除する", package_path(package.id), method: :delete, data: { confirm: 'よろしいですか？' }, class: "btn btn-danger" %>
           <%=link_to "この商品を編集する", edit_package_path(package.id), class: "btn btn-danger" %>
           <%end%>
        </div>
-       <div class="p-3">
-        <%=image_tag package.images[0].variant(resize: "250x350")%>
-       </div>
-
+        <div class="p-1 ml-sm-auto">
+         <p class="text-muted">パッケージ写真</p>
+        <%=image_tag package.images[0].variant(resize: "350x350")%>
+    </div>
   </div>
   <%end%>
 </div>
