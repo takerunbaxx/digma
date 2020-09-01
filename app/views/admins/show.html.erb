@@ -103,6 +103,9 @@
            <td><%=@admin.close.to_s(:time_jp)%></td>
          </tr>
          <tr>
+        <th><i class="fas fa-store-alt"></i> 施設所在地</th>
+          <td><%=@admin.prefecture_name + @admin.cityname + @admin.homeadress%></td>
+         </tr>         <tr>
         <th><i class="fas fa-phone-square-alt"></i> 電話番号</th>
           <td><%=@admin.phone%></td>
          </tr>
