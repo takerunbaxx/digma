@@ -13,7 +13,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #POST /resource
    def create
      super
-     flash[:success]="新規登録に成功しました"
    end
 
   # GET /resource/edit
