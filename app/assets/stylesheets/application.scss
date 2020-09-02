@@ -138,6 +138,21 @@ select#keyword{
     width: 200px;
     height: 200px;
 }
+
+.img-center{
+    text-align: center;
+    border-radius: 10px;
+  
+}
+
+//search result
+.search-top{
+    color: #EEEEEE;
+    font-family:Hiragino Sans; 
+    font-weight: bold; opacity:10; 
+    background-color: #000033;
+    opacity: 0.9;
+    };
 //user show
 
 /* Split the screen in half */
@@ -516,6 +531,8 @@ ul.footerlist{
 }
 
 
+
+
 @media all and (max-width: 670px) {
 .pay-t{
   display: none;
@@ -532,6 +549,8 @@ ul.footerlist{
 .like-icon{
   display: block;
 }
+
+
 
 
 }
