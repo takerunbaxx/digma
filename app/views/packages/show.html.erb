@@ -115,7 +115,7 @@
         <section class="mt-3"><%= render "comments/comment_list", comments: @comments%></section>
     </div>
       
-      <div class="package-price text-center col-sm-8 offset-sm-2"><h3 class="border-bottom mb-5">お一人様価格： <%=number_to_currency(@package.price.to_i, :unit => "￥", precision: 4, strip_insignificant_zeros: true)%>　円　（税込）</h3></div>
+      <div class="package-price text-center col-sm-8 offset-sm-2"><h4 class="border-bottom mb-5" style="font-weight:bold;, font-family: serif;">お一人様： <%=number_to_currency(@package.price.to_i, :unit => "￥", precision: 4, strip_insignificant_zeros: true)%>　円　（税込）</h4></div>
      
      <div class="ml-sm-5 d-flex flex-column">
       <%if current_user%>
