@@ -19,7 +19,7 @@
        <%if current_user%>
       <div class="like_form_<%= admin.id %> pt-3"> <%=render "likes/like_button", admin: admin%></div>
       <%end%>
-      <div class="result-content pt-2 ml-sm-auto"><%=link_to "施設の詳細を見る >>", admin_path(admin.id), class: "btn btn-info" %></div>
+      <div class="result-content pt-2 ml-sm-auto"><%=link_to "施設の詳細を見る >>", admin_path(admin.id), class: "btn btn-info", data: {"turbolinks" => false}%></div>
     </section>
    </div>
     <%end%>

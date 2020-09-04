@@ -1,3 +1,4 @@
+  
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -68,8 +69,6 @@ gem 'jquery-turbolinks'
 gem 'mini_magick'
 
 gem 'devise'
-
-gem 'omniauth-twitter'
 
 gem "aws-sdk-s3", require: false
 
