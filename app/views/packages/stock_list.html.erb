@@ -1,0 +1,30 @@
+<div class="my-3 p-3 bg-white rounded box-shadow">
+  <div class="d-flex"> 
+    <p class="mr-2 text-muted">在庫が十分な商品：</p><span class="mr-3"><i class="fas fa-circle fa-2x" style="color: #99FF33;"></i></span>
+    <p class="mr-2 text-muted">在庫が切れそうな商品:</p><span class="mr-3"><i class="fas fa-hand-lizard fa-2x" style="color: #777777;"></i></span>
+    <p class="mr-2 text-muted">在庫切れの商品:</p><span class="mr-3"><i class="fas fa-exclamation-triangle fa-2x" style="color: #DD0000;"></i></span>
+  </div>
+    <button type="button"><h5 class="stock-list-title pb-2 mb-0 btn btn-dark">在庫一覧</h5></button>
+    
+  <div class="stock-list">
+    <%@packages.each do |package|%>   
+    <div class="media text-muted pt-3 mr-2 border-bottom border-gray">
+      <%if package.stock == 0 %>
+      <span class="mr-3"><i class="fas fa-exclamation-triangle fa-2x" style="color: #DD0000;"></i></span>
+       <p class="media-body pb-3 mb-0 small lh-125"><strong class="d-block text-gray-dark">パッケージID:<%=package.id%>/ <%=package.package_name%></strong>
+       在庫状況： <%=package.stock%>　個 <p class="text-muted"><%=link_to "商品編集ページより在庫を補充してください", edit_package_path(package.id), class: "redy"%></p></p>
+      <%elsif package.stock <= 2 %>
+      <span class="mr-3"><i class="fas fa-hand-lizard fa-2x" style="color: #777777;"></i></span>
+       <p class="media-body pb-3 mb-0 small lh-125"><strong class="d-block text-gray-dark">パッケージID:<%=package.id%>/ <%=package.package_name%></strong>
+       在庫状況： <%=package.stock%>　個 <p class="text-muted"><%=link_to "もう少しで在庫がなくなります", edit_package_path(package.id), class: "text-secondary"%></p></p>
+      <%else%>
+      <span class="mr-3"><i class="fas fa-circle fa-2x" style="color: #99FF33;"></i></span>
+       <p class="media-body pb-3 mb-0 small lh-125"><strong class="d-block text-gray-dark">パッケージID:<%=package.id%>/ <%=package.package_name%></strong>
+       在庫状況： <%=package.stock%>　個 <p class="text-muted"><%=link_to "在庫は十分にあります", edit_package_path(package.id)%></p></p>
+      <%end%>
+    </div>
+      <%end%>
+  
+      <%= paginate @packages%>
+  </div>
+</div>

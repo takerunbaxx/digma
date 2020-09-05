@@ -15,20 +15,25 @@
         
         <div class="p-4 d-flex flex-column position-static">
             <strong class="d-inline-block mb-2 text-success">管理施設名: <%=package.admin.facility_name%> </strong>
-            <h3 class="mb-0">商品名: <%=package.package_name%> </h3>
+            <h3 class="mb-0">商品名: <%=package.package_name%> </h3> 
+            <p class="text-muted" style="oblique">商品パッケージid: <%=package.id%></p>
             <p class="text-muted">商品作成日 <%= package.created_at.to_s(:datetime_jp) %></p>
-            <p class="mb-auto">商品概要：<%=package.package_outline%></p>
+            <p class="mb-2">商品概要：<%=package.package_outline%></p>
             <%=link_to "詳細を確認する...", package_path(package.id), class: "stretched-link" %>
-       </div>
-        <div class="p-3">
+       <section class="p-3">
           <% if package.admin == current_user||current_admin %>
-          <%=link_to "この商品を削除する", package_path(package.id), method: :delete, data: { confirm: 'よろしいですか？' }, class: "btn btn-danger" %>
-          <%=link_to "この商品を編集する", edit_package_path(package.id), class: "btn btn-danger" %>
+          <%=link_to "この商品を削除する", package_path(package.id), method: :delete, data: { confirm: 'よろしいですか？' }, class: "btn btn-outline-danger" %>
+          <%=link_to "この商品を編集する", edit_package_path(package.id), class: "btn btn-outline-warning" %>
           <%end%>
+       </section>
        </div>
         <div class="p-1 ml-sm-auto">
          <p class="text-muted">パッケージ写真</p>
-        <%=image_tag package.images[0].variant(resize: "350x350")%>
+         <%if package.images[0] ==nil %>
+           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_" x="0px" y="0px" viewBox="0 0 512 512" class="slide-3 ml-sm-5" style="width: 70%; height: auto; opacity: 1;" xml:space="preserve"><style type="text/css">.st0{fill:#4B4B4B;}</style><g><path class="st0" d="M0,53.579v404.841h512V53.579H0z M165.198,125.951c28.136,0,50.942,22.806,50.942,50.934   c0,28.136-22.806,50.942-50.942,50.942c-28.126,0-50.934-22.806-50.934-50.942C114.264,148.757,137.071,125.951,165.198,125.951z    M52.244,391.713l74.967-114.227c4.298-6.548,11.404-10.715,19.216-11.273c7.813-0.558,15.431,2.558,20.611,8.436l44.665,50.617   l80.938-123.157c4.641-7.06,12.51-11.32,20.965-11.32c8.445-0.01,16.333,4.232,20.983,11.282l125.157,189.641H52.244z" style="fill: rgb(75, 75, 75);"/></g></svg>
+         <%else%>
+         <%=image_tag package.images[0].variant(resize: "350x350")%>
+         <%end%>
     </div>
   </div>
   <%end%>

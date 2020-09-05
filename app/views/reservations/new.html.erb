@@ -4,11 +4,11 @@
         <p class="lead">下記、必要項目を全て入力してください</p>
       </div>
 
-          <h4 class="mb-3">予約申込内容　</h4>
+          <h4 class="mb-3">予約申込内容</h4>
             <%= form_with(model: [@package, @reservation], url: package_reservations_confirmation_path, method: :post, local: true) do |f|%>
             <%@package=Package.find(params[:package_id])%>
             <%= f.hidden_field :package_id, value: @package.id %>
-            
+
             <div class="col-sm-6 mb-3 form-group">
                 <%=f.label :name, "氏名を記載してください" %>
                 <%=f.text_field :name, class: "form-control" %>

@@ -23,6 +23,7 @@
            <li class="nav-item"><%=link_to "商品一覧ページ", packs_index_admin_path(current_admin.id), class: "nav-link" %> </li>
            <li class="nav-item"><%= link_to "予約の確認", adminside_index_reservations_path, class: "nav-link" %></li>
            <li class="nav-item"> <%= link_to "施設情報の登録・編集", profile_edit_path , class: "nav-link"%></li>
+           <li class="nav-item"> <%= link_to "在庫状況の確認", stock_list_packages_path , class: "nav-link", data: {"turbolinks" => false}%> </li>
            <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "本当にログアウトしますか?" }, class: "nav-link" %> </li>
            <% end %>
            

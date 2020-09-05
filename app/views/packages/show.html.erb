@@ -118,9 +118,12 @@
       <div class="package-price text-center col-sm-8 offset-sm-2"><h4 class="border-bottom mb-5" style="font-weight:bold;, font-family: serif;">お一人様： <%=number_to_currency(@package.price.to_i, :unit => "￥", precision: 4, strip_insignificant_zeros: true)%>　円　（税込）</h4></div>
      
      <div class="ml-sm-5 d-flex flex-column">
-      <%if current_user%>
+      <%if current_user && @package.stock > 0%>
       <strong class="mt-5"><%=link_to "予約へすすむ >>",  new_package_reservation_path(package_id: @package.id)%></strong>
+      <%else%>
+      <strong>現在予約を受付することができません。施設に直接お問い合わせください。<br><span class="d-flex" ><i class="fas fa-phone-square-alt mr-3"></i><p><%=@package.admin.phone%></p></span></strong>
       <%end%>
+      <%=link_to "一覧へ戻る",packs_index_admin_path(@package.admin.id) %>
      </div>
 </main>
 

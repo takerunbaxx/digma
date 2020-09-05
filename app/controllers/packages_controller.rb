@@ -4,7 +4,7 @@ class PackagesController < ApplicationController
 
 def packs_index
   @admin = Admin.find(params[:id])
-  @packages = @admin.packages.with_attached_images.order(id: :desc).page(params[:page]).per(6)
+  @packages = @admin.packages.with_attached_images.order(id: :desc).page(params[:page]).per(20)
 end
   
 
@@ -54,12 +54,16 @@ def destroy
     redirect_back(fallback_location: packages_path)
 end
 
+def stock_list
+  @packages = current_admin.packages.order(id: :desc).page(params[:page]).per(20)
+end
+
 
 
 private
 
 def package_params
-  params.require(:package).permit(:package_name, :price, :package_outline, :package_detail, :package_summary, :user_id, package_images: [],images: [])
+  params.require(:package).permit(:package_name, :price, :package_outline, :package_detail, :package_summary, :stock, :user_id, package_images: [],images: [])
 end
 
 def correct_admin

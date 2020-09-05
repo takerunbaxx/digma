@@ -39,6 +39,7 @@ class ReservationsController < ApplicationController
     flash[:notice] = "予約が完了しました"
     redirect_to user_url(current_user.id)
     package.create_notification_reservation!(current_user)
+    package.stock_adjustment!(package)
     end
   end
   

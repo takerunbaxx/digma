@@ -15,10 +15,6 @@ class Package < ApplicationRecord
       self.images.purge 
    end
  end
- 
-def self.thumb_show
-  self.images.variant(resize: '350x930').processed
-end
 
 def create_notification_comment!(current_user, comment_id)
     temp_ids = Comment.select(:package_id).where(user_id: current_user.id).distinct
@@ -50,5 +46,8 @@ end
     end
   end
 
+def stock_adjustment!(package)
+    package.decrement!(:stock, 1)
+end
 
 end

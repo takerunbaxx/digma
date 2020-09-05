@@ -39,11 +39,13 @@ end
       get :search_index  end
     end
   
-  resources :packages, only:[:new, :create, :show, :edit, :update, :destroy] do   
-    resources :comments, only:[ :index,:new, :create, :destroy ]
-    resources :reservations, only:[:new, :create] 
-    post "/reservations/confirmation", to: "reservations#confirmation"
-    post "/reservations/new", to: "reservations#back"
+  resources :packages, only:[:new, :create, :show, :edit, :update, :destroy] do
+    collection do 
+     get :stock_list end
+     resources :comments, only:[ :index,:new, :create, :destroy ]
+     resources :reservations, only:[:new, :create] 
+     post "/reservations/confirmation", to: "reservations#confirmation"
+     post "/reservations/new", to: "reservations#back"
   end
   
   

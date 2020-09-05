@@ -19,12 +19,12 @@
           </div>
           <div class="card-body">
             <h2 class="card-title pricing-card-title"><span style="border-bottom:1px solid;"><%=@count_packages%></span>つの商品パッケージを作成しております。</h2>
-            <h2 class="card-title pricing-card-title"><i class="far fa-grin-stars fa-lg"></i>「行ってみたい！」の数<span style="border-bottom:1px solid;"><%=@count_likes%></span>  個</h2>
             <ul class="list-unstyled mt-3 mb-4">
               <li>＊最大5つまで商品を作成することができます。</li>
               <li>＊商品パッケージを作成する際は、必ず商品画像を登録してください。（最大３枚まで）</li>
               <li>＊施設様のプロフィール写真の登録は必須です。</li>
             </ul>
+            <h4 style="color:#FF0000;">商品の在庫状況は<%=link_to "こちら", stock_list_packages_path, data: {"turbolinks" => false}%></h4>
           </div>
       </div>
         <div class="card mb-4 box-shadow">
@@ -33,6 +33,7 @@
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">現在 <%=@count_reservations%>件の予約があります。<br>（未来分のみ）</h1>
+            <h2 class="card-title pricing-card-title"><i class="far fa-grin-stars fa-lg"></i>「行ってみたい！」の数<span style="border-bottom:1px solid;"><%=@count_likes%></span>  個</h2>
             <ul class="list-unstyled mt-3 mb-4">
               <li></li>
               <li>＊予約は予約一覧画面にて詳細をご確認ください。</li>

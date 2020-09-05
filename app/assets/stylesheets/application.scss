@@ -240,6 +240,23 @@ td{
   display: block;
 }
 
+//.admin-body{
+  //display: none;}
+  
+//.stock-list
+.stock-list{
+  display: none;
+}
+
+.redy{
+  color: #DD0000;
+  border-bottom: 1px solid;
+}
+
+.secondary{
+  //color: ;
+}
+
 // search-result
 
 //reservation show (予約の詳細)
@@ -397,6 +414,7 @@ input[type=file][data-direct-upload-url][disabled] {
 }
 
 //ここまでdirect_uploader
+
 
 //edit_admin_registration
 
