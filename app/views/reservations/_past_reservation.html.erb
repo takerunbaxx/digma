@@ -1,5 +1,5 @@
     <% @past_reservations.each do |past_reservation|%>
-     <div class="card bg-light mb-3">
+     <div class="card card-slidein bg-light mb-3">
         <div class="card-header">予約日時： <%=past_reservation.start_date.to_s(:datetime_jp)%> ~ <%=past_reservation.end_date.to_s(:datetime_jp)%></div>
          <div class="card-body d-flex justify-content-around">
           <ul class="list-unstyled">

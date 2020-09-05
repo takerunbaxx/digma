@@ -11,7 +11,7 @@
 
 <div class="col-sm-10 offset-sm-1 adminside_index pt-4">
 <% @adminside_reservations.each do |adminside_reservation|%>
-    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative br-20 bg-light">
+    <div class="card-slidein row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative br-20 bg-light">
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="col-sm-5 d-inline-block mb-2 text-secondary border-bottom border-dark"><span><i class="fas fa-user-check pr-5"></i></span> 予約者氏名: <%=adminside_reservation.name%> 様</strong>
           <strong class=" col-sm-5 5d-inline-block mb-2 text-dark border-bottom border-dark"><span><i class="fas fa-user-friends pr-5"></i></span> 参加予定人数: <%=adminside_reservation.participants%> 名</strong>
