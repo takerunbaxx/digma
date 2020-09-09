@@ -43,7 +43,7 @@
     <div class="package-items">
       <%=f.label :stock, "商品の在庫数を設定してください。（在庫以上の予約を制限することができます。）", class: "ef"%><br>
       <p style="color:white;"><%=f.number_field :stock, class: "package-text bg-lihgt p-2"%></p> 
-      <%if @package.stock = 0%>
+      <%if @package.stock == 0%>
       <p class="col-sm-4 bg-warning">現在在庫が空です</p>
       <%end%>
     </div>
