@@ -52,14 +52,13 @@ class ReservationsController < ApplicationController
   
   def adminside_index
     packages = current_admin.packages
-    @adminside_reservations = Reservation.where(package_id: packages ).order(id: :desc).page(params[:oage]).per(25)
+    @adminside_reservations = Reservation.where(package_id: packages ).order(id: :desc).page(params[:page]).per(25)
   end
   
   def adminside_show
    @reservation = Reservation.find(params[:id])
-
   end
-  
+
 
   def pay
     require 'payjp'

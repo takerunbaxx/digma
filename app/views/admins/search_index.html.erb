@@ -1,5 +1,5 @@
 <div class="mx-1">
-<h1 class="search-top col-sm-3 rounded text-center p-3"><i class="fas fa-search-plus pr-2"></i>検索結果</h1>
+<h1 class="search-top col-sm-3 rounded text-center p-3"><i class="fas fa-search-plus pr-2"></i>検索結果 <%=@admins_results.count%> 件</h1>
 <div class="bg-dark p-2">
     <% if @admins_results.present?%>
     <%=render "search", admins: @admins_results%>

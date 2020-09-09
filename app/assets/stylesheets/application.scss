@@ -1,6 +1,23 @@
-
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require fullcalendar
+ */
+ 
 * {
    box-sizing: border-box;
+   
 }
 
 html{
@@ -130,6 +147,7 @@ select#keyword{
 }
 
 
+
 // search
 
 .image-style-search {
@@ -154,8 +172,6 @@ select#keyword{
     opacity: 0.9;
     };
 //user show
-
-/* Split the screen in half */
 .split {
   z-index: 1;
   height: 100%;
@@ -168,19 +184,16 @@ select#keyword{
   color: #EEFFFF;
 }
 
-/* Control the left side */
 .left {
   left: 0;
   background-color: #FFF;
 }
 
-/* Control the right side */
 .right {
   right: 0;
   background-color: #222222;
 }
 
-/* If you want the content centered horizontally and vertically */
 .centered {
   position: absolute;
   width: 100%;
@@ -190,7 +203,6 @@ select#keyword{
   text-align: center;
 }
 
-/* Style the image inside the centered container, if needed */
 .centered img {
   width: 100px;
   border-radius: 25%;
@@ -238,6 +250,15 @@ td{
 
 .about-us-text-active{
   display: block;
+}
+
+//event_calendar
+.event_calendar{
+  background-color: #EEEEEE;
+}
+
+.datepicker{
+  color: #000000;
 }
 
 //.admin-body{
@@ -690,6 +711,8 @@ ul.footerlist{
 .like-icon{
   display: block;
 }
+
+
 
 
 

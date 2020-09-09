@@ -59,5 +59,8 @@ end
   
   resources :notifications, only: [:index, :destroy]
   resources :likes, only:[:create, :destroy]
-  
+  get "/events/event_calendar", to: "events#event_calendar"
+  resources :events, only: [:create, :destroy]
+
+
 end

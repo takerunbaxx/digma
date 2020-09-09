@@ -30,10 +30,6 @@ class AdminsController < ApplicationController
     @admins_results = @admins_search.result(distinct: true).page(params[:page]).per(25)
 
   end
-  
-  
-  private
-  
 
  
  

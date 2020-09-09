@@ -1,0 +1,46 @@
+
+<div class="p-3 bg-secondary form-group text-center">
+   <h3 class="p-3 bg-dark border border-light col-sm-2 text-white">メモ欄</h3>
+     <%=form_with(model: @event, method: :post, local: true) do |f|%>
+     <%=f.label :start_event, "開始日時"%> 
+     <%=f.datetime_field :start_event, class: "bg-light"%>
+     <%=f.label :end_event, "終了日時"%> 
+     <%=f.datetime_field :end_event, class: "bg-light"%>
+     <%=f.label :note, "予約者氏名"%>
+     <%=f.text_field :note%>
+     <%=f.label :note_content, "備考"%>
+     <%=f.text_field :note_content%>
+     <%=f.submit "メモを登録する"%>
+ </div>
+ 
+ <% end %>
+
+ 
+<table class="col-sm-5 table table-light">
+  <tbody>
+    
+      <tr>
+        <th scope="col">開始日時</th>
+        <th scope="col">終了日時</th>
+        <th scope="col">氏名</th>
+        <th scope="col">  メモ  </th>
+      </tr>
+          <%if @events.any?%>
+          <%@events.each do |event|%>  
+      
+      <tr>
+          <td><%=event.start_event.to_s(:datetime_jp)%></td>
+          <td><%=event.end_event.to_s(:datetime_jp)%></td>
+          <td><%=event.note%></td>
+          <td><%=event.note_content%></td>
+          <td><%=link_to "削除", event_path(event.id), method: :delete, data: { confirm: "削除しますか?" }, class: "btn btn-outline-danger"%></td>
+          <%end%>
+          <%else%>
+          <td>メモ登録がありません</td>
+      </tr>
+          <%end%>
+  </tbody>
+    
+</table>
+
+<div class="event_calendar mx-sm-3 p-5 mt-5" id="calendar"></div>

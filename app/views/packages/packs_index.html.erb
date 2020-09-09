@@ -21,7 +21,7 @@
             <p class="mb-2">商品概要：<%=package.package_outline%></p>
             <%=link_to "詳細を確認する...", package_path(package.id), class: "stretched-link" %>
        <section class="p-3">
-          <% if package.admin == current_user||current_admin %>
+          <% if package.admin == current_admin %>
           <%=link_to "この商品を削除する", package_path(package.id), method: :delete, data: { confirm: 'よろしいですか？' }, class: "btn btn-outline-danger" %>
           <%=link_to "この商品を編集する", edit_package_path(package.id), class: "btn btn-outline-warning" %>
           <%end%>

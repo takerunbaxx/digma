@@ -81,3 +81,7 @@ gem 'ransack'
 gem 'dotenv-rails'
 
 gem 'jquery-bgswitcher-rails', '~> 0.0.5'
+
+gem 'momentjs-rails'
+
+gem 'fullcalendar-rails'

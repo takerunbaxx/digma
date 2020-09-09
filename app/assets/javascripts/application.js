@@ -11,9 +11,11 @@
 // about supported directives.
 
 
-//= require activestorage
-//= require rails-ujs
 //= require jquery
+//= require rails-ujs
+//= require activestorage
+//= require moment
+//= require fullcalendar
 //= require turbolinks
 //= require jquery.bgswitcher.js
 //= require jquery.raty.js

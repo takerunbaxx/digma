@@ -6,6 +6,7 @@ class Admin < ApplicationRecord
   
   #belongs_to :location, dependent: :destroy
   has_many :packages, dependent: :destroy
+  has_many :events, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :passive_likes, class_name: "Like", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", dependent: :destroy
